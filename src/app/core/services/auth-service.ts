@@ -61,6 +61,7 @@ export class AuthService {
   forceLogout() {
     this.isAuthChecked = true;
     this.isAuthenticated = false;
+
     this.router.navigate(['login']);
   }
 }

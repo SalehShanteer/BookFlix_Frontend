@@ -8,5 +8,5 @@ import { LocalePipe } from '../../../shared/pipes/locale-pipe';
   styleUrl: './account-settings.scss'
 })
 export class AccountSettings {
-
+  
 }
