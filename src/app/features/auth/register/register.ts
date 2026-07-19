@@ -9,7 +9,7 @@ import { LocalePipe } from '../../../shared/pipes/locale-pipe';
 import { BaseComponent } from '../../../shared/base/base-component';
 import { ErrorHelper } from '../../../shared/helpers/error-helper';
 import { PasswordHelper } from '../../../shared/helpers/password-helper';
-import { PasswordField } from "../../../shared/components/password-field/password-field";
+import { PasswordField } from '../../../shared/components/password-field/password-field';
 
 @Component({
   selector: 'app-register',
@@ -33,7 +33,7 @@ export class Register extends BaseComponent {
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private localeService: LocaleService
+    private localeService: LocaleService,
   ) {
     super();
     this.onLoadModel();
@@ -47,7 +47,7 @@ export class Register extends BaseComponent {
         newPassword: ['', Validators.required],
         confirmPassword: ['', Validators.required],
       },
-      { validators: PasswordMatchValidator }
+      { validators: PasswordMatchValidator },
     );
     this.loadErrorMessages();
   }
@@ -88,7 +88,7 @@ export class Register extends BaseComponent {
 
   private showDashboardScreen() {
     console.log('register successful');
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['']);
   }
 
   onSignUp() {

@@ -15,7 +15,11 @@ import { LocalePipe } from '../../../shared/pipes/locale-pipe';
 export class Login {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
