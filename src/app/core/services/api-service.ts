@@ -10,8 +10,10 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  get<T>(endpoint: string): Observable<T> {
-    return this.http.get<T>(`${this.baseUrl}${endpoint}`).pipe(catchError(this.handleError));
+  get<T>(endpoint: string, options?: { headers?: any; params?: any; responseType?: any }): Observable<T> {
+    return this.http.get(`${this.baseUrl}${endpoint}`, options as any).pipe(
+      catchError(this.handleError)
+    ) as any;
   }
 
   post<T>(endpoint: string, body: any): Observable<T> {

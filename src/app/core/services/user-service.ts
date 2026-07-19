@@ -26,7 +26,7 @@ export class UserService {
   }
 
   getUserProfileImage(): Observable<Blob> {
-    return this.apiService.get<Blob>('/Users/ProfileImage');
+    return this.apiService.get<Blob>('/Users/ProfileImage', { responseType: 'blob' });
   }
 
   uploadProfileImage(file: File): Observable<any> {
