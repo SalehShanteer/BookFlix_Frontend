@@ -6,8 +6,9 @@
   /* Surfaces */
   --bf-bg-main: #111214;
   --bf-bg-sidebar: #16181c;
-  --bf-bg-card: #212429;
-  --bf-bg-input: #1b1d20;
+  --bf-bg-section: #212429;
+  --bf-bg-card: #333335;
+  --bf-bg-input: #303032;
   --bf-border-input: #3a3f47;
   --bf-gray-button: #a2a0a0;
 
@@ -24,4 +25,35 @@
   font-size: 11px;
   margin: 0px 0px -10px 10px;
   color: red;
+}
+
+.main-text {
+  color: var(--bf-text-main);
+}
+
+.form-control,
+input {
+  background-color: var(--bf-bg-input) !important;
+  border: 1px solid var(--bf-border-input) !important;
+  color: var(--bf-text-main) !important;
+
+  &::placeholder {
+    color: var(--bf-text-muted) !important;
+    opacity: 1;
+  }
+
+  &:focus {
+    background-color: var(--bf-bg-input) !important;
+    border-color: var(--bf-primary) !important;
+    color: var(--bf-text-main) !important;
+    box-shadow: 0 0 0 0.25rem rgba(38, 107, 241, 0.25) !important;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--bf-text-main) !important;
+    -webkit-box-shadow: 0 0 0px 1000px var(--bf-bg-input) inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 }

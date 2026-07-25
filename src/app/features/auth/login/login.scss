@@ -1,4 +1,6 @@
-.card{
+.card {
   max-width: 400px;
   width: 100%;
+  background-color: var(--bf-bg-card);
+  border: 2px solid var(--bf-border-input);
 }

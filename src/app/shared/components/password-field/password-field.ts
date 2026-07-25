@@ -19,13 +19,12 @@ export class PasswordField {
   @Input() placeholder: string = '';
   show: boolean = false;
   value = '';
-  imageSource: string = 'assets/images/hide.png';
+
   onToggle() {
     this.show = !this.show;
-    this.imageSource = this.show ? 'assets/images/show.png' : 'assets/images/hide.png';
   }
-  onChange = (value: any) => {};
-  onTouched = () => {};
+  onChange = (value: any) => { };
+  onTouched = () => { };
 
   writeValue(value: any): void {
     this.value = value || '';
