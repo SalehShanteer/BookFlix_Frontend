@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-account-settings',
   imports: [LocalePipe, ProfileImage],
   templateUrl: './account-settings.html',
-  styleUrl: './account-settings.scss'
+  styleUrl: './account-settings.scss',
 })
 export class AccountSettings implements OnInit, OnDestroy {
   profileImageUrl = signal<string | null>(null);
@@ -27,7 +27,7 @@ export class AccountSettings implements OnInit, OnDestroy {
       },
       error: (err) => {
         console.error('Failed to load profile image', err);
-      }
+      },
     });
   }
 
