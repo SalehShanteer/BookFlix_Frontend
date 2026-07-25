@@ -1,13 +1,46 @@
+.avatar-wrapper {
+  position: relative;
+  display: inline-block;
+
+  .edit-badge-btn {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--bf-gray-button);
+    color: var(--bf-bg-main);
+    border: 2px solid var(--bf-bg-card);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    padding: 0;
+
+    &:hover:not(:disabled) {
+      transform: scale(1.1);
+      filter: brightness(1.15);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    i {
+      font-size: 0.875rem;
+    }
+  }
+}
+
 .profile-img {
   width: 120px;
   height: 120px;
   object-fit: cover;
   border: 3px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
     border-color: var(--bf-primary);
   }
 }
@@ -21,7 +54,10 @@
   border: 2px dashed rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease-in-out;
 
+  i,
   svg {
+    display: inline-block;
+    font-size: 3rem;
     transition: transform 0.3s ease-in-out;
   }
 
@@ -29,6 +65,7 @@
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
     border-color: var(--bf-primary);
 
+    i,
     svg {
       transform: scale(1.1);
     }

@@ -1,9 +1,21 @@
-@if (imageUrl()) {
-  <img class="img-fluid rounded-circle profile-img" [src]="imageUrl()" alt="Profile Image">
-} @else {
+<div class="avatar-wrapper position-relative d-inline-block">
+  @if (profileImageUrl()) {
+  <img class="img-fluid rounded-circle profile-img" [src]="profileImageUrl()" alt="Profile Image">
+  } @else {
   <div class="default-avatar d-flex align-items-center justify-content-center rounded-circle">
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-person-fill text-secondary" viewBox="0 0 16 16">
-      <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-    </svg>
+    <i class="bi bi-person-fill text-secondary"></i>
   </div>
-}
+  }
+
+  <button type="button" class="edit-badge-btn d-flex align-items-center justify-content-center"
+    (click)="fileInput.click()" [disabled]="isUploading()" aria-label="Edit Profile Picture"
+    title="Edit Profile Picture">
+    @if (isUploading()) {
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    } @else {
+    <i class="bi bi-pencil-fill"></i>
+    }
+  </button>
+
+  <input #fileInput type="file" accept="image/*" class="d-none" (change)="onFileSelected($event)">
+</div>
