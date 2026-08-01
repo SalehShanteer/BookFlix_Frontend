@@ -1,24 +1,28 @@
-<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-black">
-  <div class="card shadow-lg p-4">
+<main class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
+  <section class="card shadow-lg p-4">
     <div class="text-center mb-4">
-      <h3 class="main-text fw-bold">{{ 'WelcomeBack' | locale }}</h3>
-      <p class="main-text">{{ 'SignInToAccount' | locale }}</p>
+      <h1 class="h3 text-main fw-bold">{{ 'WelcomeBack' | locale }}</h1>
+      <p class="text-main">{{ 'SignInToAccount' | locale }}</p>
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div class="mb-3">
-        <label for="email" class="form-label main-text">{{ 'EmailAddress' | locale }}</label>
+        <label for="email" class="form-label text-main">{{ 'EmailAddress' | locale }}</label>
         <input id="email" class="form-control" type="email" formControlName="email" placeholder="name@example.com" />
       </div>
       <div class="mb-3">
-        <label for="password" class="form-label main-text">{{ 'Password' | locale }}</label>
+        <div class="d-flex justify-content-between align-items-center mb-1">
+          <label for="password" class="form-label text-main mb-0">{{ 'Password' | locale }}</label>
+          <a routerLink="/forget-password" class="btn-link p-0"> {{ 'ForgetPassword' | locale }}</a>
+        </div>
         <app-password-field id="password" formControlName="password" placeholder="EnterPassword" />
       </div>
-      <button type="button" class="btn btn-link p-0" (click)="showRegisterScreen()">
-        {{ 'RegisterNow' | locale }}
-      </button>
       <button class="btn btn-primary w-100 py-2">
         {{ 'Login' | locale }}
       </button>
+      <div class="mt-3 d-flex align-items-center justify-content-center">
+        <span class="text-main me-1">{{ 'DontHaveAccount' | locale }}</span>
+        <a routerLink="/signup" class="btn-link p-0"> {{ 'SignUp' | locale }}</a>
+      </div>
     </form>
-  </div>
-</div>
+  </section>
+</main>

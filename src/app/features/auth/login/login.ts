@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ILogin } from '../../../core/models/auth/login.model';
 import { AuthService } from '../../../core/services/auth-service';
 import { PasswordField } from '../../../shared/components/password-field/password-field';
@@ -8,7 +8,7 @@ import { LocalePipe } from '../../../shared/pipes/locale-pipe';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, PasswordField, LocalePipe],
+  imports: [ReactiveFormsModule, PasswordField, LocalePipe, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
@@ -39,7 +39,7 @@ export class Login {
     });
   }
 
-  showRegisterScreen() {
+  showSignUpScreen() {
     this.router.navigate(['signup']);
   }
 }

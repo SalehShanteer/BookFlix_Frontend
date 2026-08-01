@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ISignup } from '../../../core/models/auth/signup.model';
 import { PasswordMatchValidator } from '../../../shared/validators/password-match.validator';
 import { LocaleService } from '../../../core/services/locale-service';
@@ -13,7 +13,7 @@ import { PasswordField } from '../../../shared/components/password-field/passwor
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, LocalePipe, PasswordField],
+  imports: [ReactiveFormsModule, LocalePipe, PasswordField, RouterLink],
   templateUrl: './signup.html',
   styleUrl: './signup.scss',
 })
