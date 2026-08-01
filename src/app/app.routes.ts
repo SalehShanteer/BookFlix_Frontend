@@ -3,7 +3,7 @@ import { AuthLayout } from './layouts/auth-layout/auth-layout';
 import { MainLayout } from './layouts/main-layout/main-layout';
 import { Login } from './features/auth/login/login';
 import { UserDashboard } from './features/users/user-dashboard/user-dashboard';
-import { Register } from './features/auth/register/register';
+import { SignUp } from './features/auth/signup/signup';
 import { ServerError } from './shared/components/server-error/server-error';
 import { authGuard } from './core/guards/auth-guard';
 import { AccountSettings } from './features/settings/account-settings/account-settings';
@@ -23,7 +23,7 @@ export const routes: Routes = [
     component: AuthLayout,
     children: [
       { path: 'login', component: Login },
-      { path: 'register', component: Register },
+      { path: 'signup', component: SignUp },
     ],
   },
   {

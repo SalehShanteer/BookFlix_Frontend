@@ -40,6 +40,6 @@ export class Login {
   }
 
   showRegisterScreen() {
-    this.router.navigate(['register']);
+    this.router.navigate(['signup']);
   }
 }

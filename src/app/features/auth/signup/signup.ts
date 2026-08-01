@@ -14,10 +14,10 @@ import { PasswordField } from '../../../shared/components/password-field/passwor
 @Component({
   selector: 'app-register',
   imports: [ReactiveFormsModule, LocalePipe, PasswordField],
-  templateUrl: './register.html',
-  styleUrl: './register.scss',
+  templateUrl: './signup.html',
+  styleUrl: './signup.scss',
 })
-export class Register extends BaseComponent {
+export class SignUp extends BaseComponent {
   registerForm!: FormGroup;
 
   usernameError: string | null = null;
