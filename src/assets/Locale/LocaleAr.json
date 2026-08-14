@@ -27,6 +27,11 @@
   "SignOut": "تسجيل الخروج",
   "SignUp": "إنشاء حساب",
   "UserOverview": "نظرة عامة على المستخدم",
-  "UsernameUsed": "اسم المستخدم مستخدم من قبل",
-  "WelcomeBack": "مرحبًا بعودتك"
+  "WelcomeBack": "مرحبًا بعودتك",
+  "FieldRequired": "هذا الحقل مطلوب",
+  "InvalidEmail": "يرجى إدخال بريد إلكتروني صحيح",
+  "MinLengthError": "الحد الأدنى للطول غير مستوفى",
+  "PasswordMismatch": "كلمات المرور غير متطابقة",
+  "InvalidField": "قيمة غير صالحة"
 }
+

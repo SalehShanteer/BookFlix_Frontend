@@ -27,6 +27,10 @@
   "SignOut": "Sign Out",
   "SignUp": "Sign Up",
   "UserOverview": "User Overview",
-  "UsernameUsed": "Username is already taken",
-  "WelcomeBack": "Welcome Back"
+  "WelcomeBack": "Welcome Back",
+  "FieldRequired": "This field is required",
+  "InvalidEmail": "Please enter a valid email address",
+  "MinLengthError": "Minimum length not met",
+  "PasswordMismatch": "Passwords do not match",
+  "InvalidField": "Invalid input value"
 }
