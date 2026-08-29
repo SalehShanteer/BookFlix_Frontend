@@ -10,10 +10,11 @@ import { BaseComponent } from '../../../shared/base/base-component';
 import { ErrorHelper } from '../../../shared/helpers/error-helper';
 import { PasswordHelper } from '../../../shared/helpers/password-helper';
 import { PasswordField } from '../../../shared/components/password-field/password-field';
+import { ActionButton } from '../../../shared/components/action-button/action-button';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, LocalePipe, PasswordField, RouterLink],
+  imports: [ReactiveFormsModule, LocalePipe, PasswordField, RouterLink, ActionButton],
   templateUrl: './signup.html',
   styleUrl: './signup.scss',
 })
@@ -39,7 +40,7 @@ export class SignUp extends BaseComponent {
     this.onLoadModel();
   }
 
-  override onLoadModel(): void {
+  onLoadModel(): void {
     this.registerForm = this.fb.group(
       {
         username: ['', Validators.required],
@@ -93,8 +94,9 @@ export class SignUp extends BaseComponent {
 
   onSignUp() {
     this.resetErrors();
-
     if (!this.validateSignUp()) return;
+
+    this.isLoading.set(true);
     const { username, email, newPassword } = this.registerForm.value;
     const registerRequest: ISignup = {
       username,
@@ -103,9 +105,11 @@ export class SignUp extends BaseComponent {
     };
     this.authService.signup(registerRequest).subscribe({
       next: () => {
+        this.isLoading.set(false);
         this.showDashboardScreen();
       },
       error: (err) => {
+        this.isLoading.set(false);
         let errorsArray: string[] = ErrorHelper.toArray(err);
         this.errorHandling(errorsArray);
       },

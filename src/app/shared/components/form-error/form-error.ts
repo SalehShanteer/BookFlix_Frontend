@@ -23,16 +23,14 @@ export class FormError {
 
   errorMessage(): string {
     if (this.customError()) {
-      return this.customError()!;
+      return this.localeService.getLocale(this.customError()!);
     }
 
     const errors = this.control()?.errors;
     if (!errors) return '';
 
     if (errors['serverError']) {
-      return typeof errors['serverError'] === 'string'
-        ? errors['serverError']
-        : this.localeService.getLocale(errors['serverError']);
+      return this.localeService.getLocale(errors['serverError']);
     }
     if (errors['required']) {
       return this.localeService.getLocale('FieldRequired');
@@ -55,6 +53,7 @@ export class FormError {
     if (errors['emailUsed']) {
       return this.localeService.getLocale('EmailUsed');
     }
+  
     return this.localeService.getLocale('InvalidField');
   }
 }

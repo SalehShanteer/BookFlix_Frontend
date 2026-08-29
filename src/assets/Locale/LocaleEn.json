@@ -32,5 +32,6 @@
   "InvalidEmail": "Please enter a valid email address",
   "MinLengthError": "Minimum length not met",
   "PasswordMismatch": "Passwords do not match",
-  "InvalidField": "Invalid input value"
+  "InvalidField": "Invalid input value",
+  "InvalidCredentials": "Invalid email or password"
 }

@@ -32,6 +32,7 @@
   "InvalidEmail": "يرجى إدخال بريد إلكتروني صحيح",
   "MinLengthError": "الحد الأدنى للطول غير مستوفى",
   "PasswordMismatch": "كلمات المرور غير متطابقة",
-  "InvalidField": "قيمة غير صالحة"
+  "InvalidField": "قيمة غير صالحة",
+  "InvalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة"
 }
 

@@ -1,4 +1,6 @@
+import { signal } from "@angular/core";
+
 export class BaseComponent {
   constructor(){}
-   onLoadModel() : void{}
+  isLoading = signal(false);
 }

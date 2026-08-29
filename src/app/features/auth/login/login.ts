@@ -7,28 +7,30 @@ import { PasswordField } from '../../../shared/components/password-field/passwor
 import { LocalePipe } from '../../../shared/pipes/locale-pipe';
 import { FormError } from '../../../shared/components/form-error/form-error';
 import { EmailValidator } from '../../../shared/validators/email.validator';
+import { BaseComponent } from '../../../shared/base/base-component';
+import { ActionButton } from '../../../shared/components/action-button/action-button';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, PasswordField, LocalePipe, RouterLink, FormError],
+  imports: [ReactiveFormsModule, PasswordField, LocalePipe, RouterLink, FormError, ActionButton],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
-export class Login {
+export class Login extends BaseComponent{
   loginForm: FormGroup;
-  isLoading = signal(false);
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService,
   ) {
+    super();
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, EmailValidator()]],
       password: ['', Validators.required],
     });
   }
-  // check custom errors
+
   onLogin() {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.invalid) return;
@@ -44,6 +46,10 @@ export class Login {
       error: (err) => {
         console.error('Login failed:', err);
         this.isLoading.set(false);
+
+        const message = err?.error.message || err?.error;
+
+        this.loginForm.get('password')?.setErrors({serverError: message})
       },
     });
   }

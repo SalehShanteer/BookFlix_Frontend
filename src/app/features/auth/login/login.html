@@ -18,14 +18,10 @@
         <app-password-field id="password" formControlName="password" placeholder="EnterPassword" />
         <app-form-error [control]="loginForm.get('password')"></app-form-error>
       </div>
-      <button class="btn btn-primary w-100 py-2" [disabled]="isLoading()" type="submit" aria-label="Login">
-        @if (isLoading()){
-        <span class="spinner-border spinner-border-xs" role="status" aria-hidden="true"></span>
-        }
-        @else{
+      <button app-action-button type="submit" [isLoading]="isLoading()" aria-label="Login">
         {{ 'Login' | locale }}
-        }
       </button>
+    
       <div class="mt-3 d-flex align-items-center justify-content-center">
         <span class="text-main me-1">{{ 'DontHaveAccount' | locale }}</span>
         <a routerLink="/signup" class="btn-link p-0"> {{ 'SignUp' | locale }}</a>
