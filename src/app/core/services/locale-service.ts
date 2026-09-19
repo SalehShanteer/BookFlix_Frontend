@@ -23,6 +23,9 @@ export class LocaleService {
   }
 
   getLocale(key: string): string {
-    return this.currentLanguage === 'ar' ? this.localeAr[key] ?? key : this.localeEn[key] ?? key;
+    key = key[0].toUpperCase() + key.slice(1);
+    return this.currentLanguage === 'ar'
+      ? (this.localeAr[key] ?? key)
+      : (this.localeEn[key] ?? key);
   }
 }

@@ -6,27 +6,40 @@
     </div>
     <form [formGroup]="registerForm" (ngSubmit)="onSignUp()">
       <div class="mb-3">
-        <input id="username" class="form-control" type="text" formControlName="username"
-          placeholder="{{ 'EnterUsername' | locale }}" />
-        @if (usernameHasError){
-        <p class="error-text">{{ usernameError }}</p>
-        }
+        <input
+          id="username"
+          class="form-control"
+          type="text"
+          formControlName="username"
+          placeholder="{{ 'EnterUsername' | locale }}"
+        />
+        <app-form-error [control]="registerForm.get('username')"></app-form-error>
       </div>
       <div class="mb-3">
-        <input id="email" class="form-control" type="email" formControlName="email"
-          placeholder="{{ 'EnterEmail' | locale }}" />
-        @if (emailHasError){
-        <p class="error-text">{{ emailError }}</p>
-        }
+        <input
+          id="email"
+          class="form-control"
+          type="email"
+          formControlName="email"
+          placeholder="{{ 'EnterEmail' | locale }}"
+        />
+        <app-form-error [control]="registerForm.get('email')"></app-form-error>
       </div>
       <div class="mb-3">
-        <app-password-field id="newPassword" formControlName="newPassword" placeholder="EnterPassword" />
-        @if (passwordHasError){
-        <p class="error-text">{{ passwordError }}</p>
-        }
+        <app-password-field
+          id="newPassword"
+          formControlName="newPassword"
+          placeholder="EnterPassword"
+        />
+        <app-form-error [control]="registerForm.get('newPassword')"></app-form-error>
       </div>
       <div class="mb-3">
-        <app-password-field id="confirmPassword" formControlName="confirmPassword" placeholder="ConfirmPassword" />
+        <app-password-field
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          placeholder="ConfirmPassword"
+        />
+        <app-form-error [control]="registerForm.get('confirmPassword')"></app-form-error>
       </div>
       <button app-action-button type="submit" [isLoading]="isLoading()" aria-label="SignUp">
         {{ 'SignUp' | locale }}

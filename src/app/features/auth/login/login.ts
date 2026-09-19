@@ -1,6 +1,6 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { ILogin } from '../../../core/models/auth/login.model';
 import { AuthService } from '../../../core/services/auth-service';
 import { PasswordField } from '../../../shared/components/password-field/password-field';
@@ -16,20 +16,13 @@ import { ActionButton } from '../../../shared/components/action-button/action-bu
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
-export class Login extends BaseComponent{
-  loginForm: FormGroup;
-
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private authService: AuthService,
-  ) {
-    super();
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, EmailValidator()]],
-      password: ['', Validators.required],
-    });
-  }
+export class Login extends BaseComponent {
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
+  loginForm: FormGroup= this.fb.group({
+    email: ['', [Validators.required, EmailValidator()]],
+    password: ['', Validators.required],
+  });
 
   onLogin() {
     this.loginForm.markAllAsTouched();
@@ -46,10 +39,8 @@ export class Login extends BaseComponent{
       error: (err) => {
         console.error('Login failed:', err);
         this.isLoading.set(false);
-
         const message = err?.error.message || err?.error;
-
-        this.loginForm.get('password')?.setErrors({serverError: message})
+        this.loginForm.get('password')?.setErrors({ serverError: message });
       },
     });
   }

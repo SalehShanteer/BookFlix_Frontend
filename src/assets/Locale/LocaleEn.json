@@ -15,7 +15,7 @@
   "GoHome": "Go to Home",
   "Login": "Login",
   "Password": "Password",
-  "PasswordWeak": "Password is too weak",
+  "WeakPassword": "Password is too weak",
   "PersonalInformation": "Personal Information",
   "RegisterCardMessage": "Join us and start your experience now!",
   "RegisterNow": "Don't have an account? Register Now",

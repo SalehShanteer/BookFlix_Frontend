@@ -1,5 +1,5 @@
 import { Component, inject, input } from '@angular/core';
-import { AbstractControl, FormGroupDirective } from '@angular/forms';
+import { AbstractControl, FormGroupDirective, ValidationErrors } from '@angular/forms';
 import { LocaleService } from '../../../core/services/locale-service';
 
 @Component({
@@ -28,35 +28,11 @@ export class FormError {
 
     const errors = this.control()?.errors;
     if (!errors) return '';
+    return this.localeService.getLocale(this.getErrorKey(errors));
+  }
 
-    if (errors['serverError']) {
-      return this.localeService.getLocale(errors['serverError']);
-    }
-    if (errors['required']) {
-      return this.localeService.getLocale('FieldRequired');
-    }
-    if (errors['invalidEmail']) {
-      return this.localeService.getLocale('InvalidEmail');
-    }
-    if (errors['minlength']) {
-      return this.localeService.getLocale('MinLengthError');
-    }
-    if (errors['passwordWeak']) {
-      return this.localeService.getLocale('PasswordWeak');
-    }
-    if (errors['passwordMismatch']) {
-      return this.localeService.getLocale('PasswordMismatch');
-    }
-    if (errors['usernameUsed']) {
-      return this.localeService.getLocale('UsernameUsed');
-    }
-    if (errors['emailUsed']) {
-      return this.localeService.getLocale('EmailUsed');
-    }
-  
-    return this.localeService.getLocale('InvalidField');
+  private getErrorKey(errors: ValidationErrors): string {
+    if (errors['serverError']) return errors['serverError'];
+    return Object.keys(errors)[0] ?? 'InvalidField';
   }
 }
-
-
-

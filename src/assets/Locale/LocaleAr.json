@@ -15,7 +15,7 @@
   "GoHome": "العودة إلى الصفحة الرئيسية",
   "Login": "تسجيل الدخول",
   "Password": "كلمة المرور",
-  "PasswordWeak": "كلمة المرور ضعيفة جدًا",
+  "WeakPassword": "كلمة المرور ضعيفة جدًا",
   "PersonalInformation": "المعلومات الشخصية",
   "RegisterCardMessage": "انضم إلينا وابدأ تجربتك الآن!",
   "RegisterNow": "ليس لديك حساب؟ سجّل الآن",
@@ -35,4 +35,3 @@
   "InvalidField": "قيمة غير صالحة",
   "InvalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة"
 }
-

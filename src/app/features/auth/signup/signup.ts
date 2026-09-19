@@ -1,91 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth-service';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { ISignup } from '../../../core/models/auth/signup.model';
 import { PasswordMatchValidator } from '../../../shared/validators/password-match.validator';
-import { LocaleService } from '../../../core/services/locale-service';
 import { LocalePipe } from '../../../shared/pipes/locale-pipe';
 import { BaseComponent } from '../../../shared/base/base-component';
-import { ErrorHelper } from '../../../shared/helpers/error-helper';
-import { PasswordHelper } from '../../../shared/helpers/password-helper';
 import { PasswordField } from '../../../shared/components/password-field/password-field';
 import { ActionButton } from '../../../shared/components/action-button/action-button';
+import { FormError } from '../../../shared/components/form-error/form-error';
+import { StrongPasswordValidator } from '../../../shared/validators/strong-password.validator';
+import { EmailValidator } from '../../../shared/validators/email.validator';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, LocalePipe, PasswordField, RouterLink, ActionButton],
+  imports: [ReactiveFormsModule, LocalePipe, PasswordField, RouterLink, ActionButton, FormError],
   templateUrl: './signup.html',
   styleUrl: './signup.scss',
 })
 export class SignUp extends BaseComponent {
-  registerForm!: FormGroup;
-
-  usernameError: string | null = null;
-  usernameHasError: boolean = false;
-
-  emailError: string | null = null;
-  emailHasError: boolean = false;
-
-  passwordError: string | null = null;
-  passwordHasError: boolean = false;
-
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private authService: AuthService,
-    private localeService: LocaleService,
-  ) {
-    super();
-    this.onLoadModel();
-  }
-
-  onLoadModel(): void {
-    this.registerForm = this.fb.group(
-      {
-        username: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        newPassword: ['', Validators.required],
-        confirmPassword: ['', Validators.required],
-      },
-      { validators: PasswordMatchValidator },
-    );
-    this.loadErrorMessages();
-  }
-
-  private validatePassword(): boolean {
-    const password = this.registerForm.get('newPassword')?.value;
-    const result = PasswordHelper.IsStrongPassword(password);
-    if (!result) {
-      this.passwordHasError = true;
-    }
-    return result;
-  }
-
-  private validateSignUp(): boolean {
-    let isValid: boolean = true;
-    isValid &&= this.validatePassword();
-
-    return isValid;
-  }
-
-  private resetErrors() {
-    this.usernameHasError = false;
-    this.emailHasError = false;
-    this.passwordHasError = false;
-  }
-
-  private loadErrorMessages() {
-    this.usernameError = this.localeService.getLocale('UsernameUsed');
-    this.emailError = this.localeService.getLocale('EmailUsed');
-    this.passwordError = this.localeService.getLocale('PasswordWeak');
-  }
-
-  private errorHandling(errors: string[]) {
-    if (errors.includes('UsernameUsed')) this.usernameHasError = true;
-    if (errors.includes('EmailUsed')) this.emailHasError = true;
-    if (errors.includes('PasswordWeak')) this.passwordHasError = true;
-  }
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
+  registerForm: FormGroup = this.fb.group(
+    {
+      username: ['', Validators.required],
+      email: ['', [Validators.required, EmailValidator()]],
+      newPassword: ['', [Validators.required, StrongPasswordValidator()]],
+      confirmPassword: ['', Validators.required],
+    },
+    { validators: PasswordMatchValidator },
+  );
 
   private showDashboardScreen() {
     console.log('register successful');
@@ -93,8 +37,8 @@ export class SignUp extends BaseComponent {
   }
 
   onSignUp() {
-    this.resetErrors();
-    if (!this.validateSignUp()) return;
+    this.registerForm.markAllAsTouched();
+    if (!this.registerForm.valid) return;
 
     this.isLoading.set(true);
     const { username, email, newPassword } = this.registerForm.value;
@@ -110,8 +54,8 @@ export class SignUp extends BaseComponent {
       },
       error: (err) => {
         this.isLoading.set(false);
-        let errorsArray: string[] = ErrorHelper.toArray(err);
-        this.errorHandling(errorsArray);
+        const message = err?.error.message || err?.error;
+        this.registerForm.get('newPassword')?.setErrors({ serverError: message });
       },
     });
   }

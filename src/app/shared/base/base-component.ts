@@ -1,6 +1,7 @@
-import { signal } from "@angular/core";
+import { inject, signal } from '@angular/core';
+import { Router } from '@angular/router';
 
-export class BaseComponent {
-  constructor(){}
+export abstract class BaseComponent {
+  protected router = inject(Router);
   isLoading = signal(false);
 }
