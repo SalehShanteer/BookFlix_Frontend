@@ -40,6 +40,7 @@
           placeholder="ConfirmPassword"
         />
         <app-form-error [control]="registerForm.get('confirmPassword')"></app-form-error>
+        <app-form-error [customError]="serverError()"></app-form-error>
       </div>
       <button app-action-button type="submit" [isLoading]="isLoading()" aria-label="SignUp">
         {{ 'SignUp' | locale }}

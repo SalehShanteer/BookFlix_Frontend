@@ -33,5 +33,10 @@
   "MinLengthError": "Minimum length not met",
   "PasswordMismatch": "Passwords do not match",
   "InvalidField": "Invalid input value",
-  "InvalidCredentials": "Invalid email or password"
+  "InvalidCredentials": "Invalid email or password",
+  "UsernameLengthTooShort": "Username must be at least 4 characters long",
+  "UsernameUsed": "Username is already taken",
+  "PasswordWeak": "Password is too weak. Use at least 8 characters with upper, lower, number and symbol",
+  "EmailRequired": "Email is required",
+  "PasswordRequired": "Password is required"
 }

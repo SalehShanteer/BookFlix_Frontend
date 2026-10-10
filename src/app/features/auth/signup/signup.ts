@@ -37,6 +37,7 @@ export class SignUp extends BaseComponent {
   }
 
   onSignUp() {
+    this.serverError.set(null);
     this.registerForm.markAllAsTouched();
     if (!this.registerForm.valid) return;
 
@@ -54,8 +55,7 @@ export class SignUp extends BaseComponent {
       },
       error: (err) => {
         this.isLoading.set(false);
-        const message = err?.error.message || err?.error;
-        this.registerForm.get('newPassword')?.setErrors({ serverError: message });
+        this.serverError.set(this.getServerErrorMessage(err));
       },
     });
   }

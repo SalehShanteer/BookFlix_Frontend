@@ -19,12 +19,13 @@ import { ActionButton } from '../../../shared/components/action-button/action-bu
 export class Login extends BaseComponent {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
-  loginForm: FormGroup= this.fb.group({
+  loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, EmailValidator()]],
     password: ['', Validators.required],
   });
 
   onLogin() {
+    this.serverError.set(null);
     this.loginForm.markAllAsTouched();
     if (this.loginForm.invalid) return;
 
@@ -32,15 +33,12 @@ export class Login extends BaseComponent {
     this.isLoading.set(true);
     this.authService.login(loginRequest).subscribe({
       next: () => {
-        console.log('Login successful');
         this.isLoading.set(false);
         this.router.navigate(['']);
       },
       error: (err) => {
-        console.error('Login failed:', err);
         this.isLoading.set(false);
-        const message = err?.error.message || err?.error;
-        this.loginForm.get('password')?.setErrors({ serverError: message });
+        this.serverError.set(this.getServerErrorMessage(err));
       },
     });
   }

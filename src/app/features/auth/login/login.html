@@ -7,7 +7,13 @@
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div class="mb-3">
         <label for="email" class="form-label text-main">{{ 'EmailAddress' | locale }}</label>
-        <input id="email" class="form-control" type="email" formControlName="email" placeholder="name@example.com" />
+        <input
+          id="email"
+          class="form-control"
+          type="email"
+          formControlName="email"
+          placeholder="name@example.com"
+        />
         <app-form-error [control]="loginForm.get('email')"></app-form-error>
       </div>
       <div class="mb-3">
@@ -17,11 +23,11 @@
         </div>
         <app-password-field id="password" formControlName="password" placeholder="EnterPassword" />
         <app-form-error [control]="loginForm.get('password')"></app-form-error>
+        <app-form-error [customError]="serverError()"></app-form-error>
       </div>
       <button app-action-button type="submit" [isLoading]="isLoading()" aria-label="Login">
         {{ 'Login' | locale }}
       </button>
-    
       <div class="mt-3 d-flex align-items-center justify-content-center">
         <span class="text-main me-1">{{ 'DontHaveAccount' | locale }}</span>
         <a routerLink="/signup" class="btn-link p-0"> {{ 'SignUp' | locale }}</a>
