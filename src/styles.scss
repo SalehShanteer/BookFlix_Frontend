@@ -10,6 +10,8 @@
   --bf-bg-input: #181b24;
   --bf-border-input: #2d3446;
   --bf-gray-button: #94a3b8;
+  --bf-bg-gray: #2b2d31;
+  --bf-stroke-gray: #d1d5db;
 
   --bf-text-main: #f8fafc;
   --bf-text-muted: #94a3b8;
@@ -23,7 +25,16 @@ body {
   color: var(--bf-text-main);
   margin: 0;
   min-height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    sans-serif;
 }
 
 .error-text {
@@ -58,7 +69,9 @@ input {
   background-color: var(--bf-bg-input) !important;
   border: 1px solid var(--bf-border-input) !important;
   color: var(--bf-text-main) !important;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 
   &::placeholder {
     color: var(--bf-text-muted) !important;
@@ -73,7 +86,7 @@ input {
     background-color: var(--bf-bg-input) !important;
     border-color: var(--bf-primary) !important;
     color: var(--bf-text-main) !important;
-    box-shadow: 0 0 0 0.25rem rgba(var(--bf-primary-rgb), 0.20) !important;
+    box-shadow: 0 0 0 0.25rem rgba(var(--bf-primary-rgb), 0.2) !important;
   }
 
   &:-webkit-autofill,
