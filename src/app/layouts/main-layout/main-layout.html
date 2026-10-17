@@ -1,6 +1,9 @@
-<div class="d-flex root">
-  <app-navbar></app-navbar>
-  <main class="p-4">
-    <router-outlet></router-outlet>
-  </main>
+<div class="app-shell">
+  <app-landing-page-header></app-landing-page-header>
+  <div class="d-flex body">
+    <app-navbar class="d-none d-md-flex"></app-navbar>
+    <main class="p-4">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
 </div>

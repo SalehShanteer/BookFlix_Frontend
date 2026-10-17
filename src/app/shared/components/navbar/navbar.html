@@ -1,13 +1,32 @@
 <div class="root d-flex flex-column flex-shrink-0">
-  <a routerLink="/" class="d-flex align-items-center ms-3 mb-3 mb-md-0 me-md-auto text-decoration-none text-dark">
-    <span class="fs-4 fw-bold text-white">Book</span>
-    <span class="fs-4 fw-bold text-primary">Flix</span>
-  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    (click)="toggleMenu()"
+    [attr.aria-expanded]="!isMenuCollapsed()"
+    aria-label="Toggle navigation"
+  >
+    <i class="bi bi-list"></i>
+  </button>
+  <button
+    class="navbar-toggler"
+    type="button"
+    (click)="closeMenu()"
+    [attr.aria-expanded]="!isMenuCollapsed()"
+    aria-label="Toggle navigation"
+  >
+    <i class="bi bi-x"></i>
+  </button>
+  <app-book-flix-logo></app-book-flix-logo>
   <hr />
-
   <ul class="nav nav-pills flex-column mb-auto gap-1">
     <li class="nav-item">
-      <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a
+        class="nav-link"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <i class="bi bi-columns-gap"></i>{{ 'Dashboard' | locale }}
       </a>
     </li>

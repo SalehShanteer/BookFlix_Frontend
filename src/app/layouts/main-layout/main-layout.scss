@@ -1,8 +1,17 @@
-.root {
-  background-color: var(--bf-bg-main);
-  main {
-    flex-grow: 1;
-    height: 100vh;
-    overflow-y: auto;
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+
+  .body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    background-color: var(--bf-bg-main);
+
+    main {
+      flex: 1;
+      overflow-y: auto;
+    }
   }
 }
