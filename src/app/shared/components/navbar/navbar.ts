@@ -15,15 +15,6 @@ export class Navbar {
     private router: Router,
     private authService: AuthService,
   ) {}
-  isMenuCollapsed = signal(true);
-
-  toggleMenu() {
-    this.isMenuCollapsed.update((state) => !state);
-  }
-
-  closeMenu() {
-    this.isMenuCollapsed.set(true);
-  }
 
   signOut() {
     this.authService.logoutBackend().subscribe({
