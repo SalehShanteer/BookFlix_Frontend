@@ -6,10 +6,11 @@ import { NAV_CONFIG } from '../../../core/config/nav.config';
 import { AuthService } from '../../../core/services/auth-service';
 import { Router } from '@angular/router';
 import { LocalePipe } from '../../pipes/locale-pipe';
+import { DropdownMenu } from '../dropdown-menu/dropdown-menu';
 
 @Component({
   selector: 'app-landing-page-header',
-  imports: [BookFlixLogo, LocalePipe],
+  imports: [BookFlixLogo, LocalePipe, DropdownMenu],
   templateUrl: './landing-page-header.html',
   styleUrl: './landing-page-header.scss',
 })
