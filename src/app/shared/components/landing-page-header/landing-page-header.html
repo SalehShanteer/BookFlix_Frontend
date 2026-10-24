@@ -5,23 +5,25 @@
         <i class="bi bi-list"></i>
       </button>
     }
-    <app-book-flix-logo class="me-auto"></app-book-flix-logo>
-    @for (item of navItems(); track item.id) {
-      <div
-        class="nav-item-wrapper"
-        (mouseenter)="onMenuHover(item.id)"
-        (mouseleave)="onMenuHoverOut()"
-      >
-        <div class="nav-item">
-          <span>{{ item.title }}</span>
-          <i class="bi bi-chevron-down"></i>
+    <app-book-flix-logo class="me-5"></app-book-flix-logo>
+    <div class="d-flex gap-3 me-auto">
+      @for (item of navItems(); track item.id) {
+        <div
+          class="nav-item-wrapper"
+          (mouseenter)="onMenuHover(item.id)"
+          (mouseleave)="onMenuHoverOut()"
+        >
+          <div class="nav-item">
+            <span class="me-2">{{ item.title }}</span>
+            <i class="bi bi-chevron-down"></i>
+          </div>
+          @if (item.children?.length && activeHoveredId() === item.id) {
+            <app-dropdown-menu [item]="item" />
+          }
         </div>
-        @if (item.children?.length && activeHoveredId() === item.id) {
-          <app-dropdown-menu [item]="item" />
-        }
-      </div>
-    }
-    <button type="button" class="btn btn-dark btn-sm ms-5" (click)="signOut()">
+      }
+    </div>
+    <button type="button" class="btn btn-dark btn-sm" (click)="signOut()">
       {{ 'SignOut' | locale }}
     </button>
   </div>
