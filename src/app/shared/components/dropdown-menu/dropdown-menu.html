@@ -1,10 +1,14 @@
 <div class="dropdown-menu">
   <span class="dropdown-menu-title">{{ item().menuTitle }}</span>
   @for (child of item().children; track child.id) {
-    <div class="dropdown-item-grid">
-      <i class="bi bi-pencil-fill"></i>
-      <span class="dropdown-menu-item-title">{{ child.title }}</span>
-      <span class="dropdown-menu-item-description">{{ child.description }}</span>
+    <div class="dropdown-item">
+      <div class="icon-wrapper" [style.color]="child.iconColor">
+        <i [class]="child.icon"></i>
+      </div>
+      <div class="dropdown-item-text">
+        <span class="dropdown-menu-item-title">{{ child.title }}</span>
+        <span class="dropdown-menu-item-description">{{ child.description }}</span>
+      </div>
     </div>
   }
 </div>

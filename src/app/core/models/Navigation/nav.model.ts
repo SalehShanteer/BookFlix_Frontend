@@ -4,7 +4,7 @@ export interface NavChildItem {
   route: string;
   description?: string;
   icon?: string;
-  badge?: string;
+  iconColor?: string;
 }
 
 export interface NavItem {
