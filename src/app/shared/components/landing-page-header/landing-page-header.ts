@@ -19,6 +19,14 @@ export class LandingPageHeader {
   router = inject(Router);
 
   navItems = signal<NavItem[]>(NAV_CONFIG);
+  activeHoveredId = signal<string | null>(null);
+  onMenuHover(itemId: string) {
+    this.activeHoveredId.set(itemId);
+  }
+
+  onMenuHoverOut() {
+    this.activeHoveredId.set(null);
+  }
 
   signOut() {
     this.authService.logoutBackend().subscribe({

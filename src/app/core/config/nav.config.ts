@@ -4,6 +4,7 @@ export const NAV_CONFIG: NavItem[] = [
   {
     id: 'dashboard',
     title: 'Dashboard',
+    menuTitle: 'Dashboard Navigation',
     route: '',
     children: [
       {
@@ -23,6 +24,7 @@ export const NAV_CONFIG: NavItem[] = [
   {
     id: 'library',
     title: 'Library',
+    menuTitle: 'Saved Media',
     route: '/library',
     children: [
       {
@@ -42,11 +44,13 @@ export const NAV_CONFIG: NavItem[] = [
   {
     id: 'community',
     title: 'Community',
+    menuTitle: 'Social Networks',
     route: '/community',
   },
   {
     id: 'account-settings',
     title: 'Account Settings',
+    menuTitle: 'Sub-Pages',
     route: '/personal-information',
     children: [
       {

@@ -10,6 +10,7 @@ export interface NavChildItem {
 export interface NavItem {
   id: string;
   title: string;
+  menuTitle: string;
   route?: string;
   icon?: string;
   children?: NavChildItem[];
