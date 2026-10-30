@@ -1,7 +1,12 @@
 <div class="app-shell">
   <app-landing-page-header></app-landing-page-header>
-  <div class="d-flex body">
-    <app-navbar class="d-none d-md-flex"></app-navbar>
+  <div class="d-flex body" [class.overflow-hidden]="showBackdrop()">
+    @if (responsiveService.isMobile()) {
+      <app-navbar></app-navbar>
+    }
+    @if (showBackdrop()) {
+      <div class="navbar-backdrop" (click)="closeNavbar()"></div>
+    }
     <main class="p-4">
       <router-outlet></router-outlet>
     </main>

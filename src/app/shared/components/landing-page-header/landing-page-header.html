@@ -1,30 +1,39 @@
 <header>
   <div class="d-flex p-2">
     @if (responsiveService.isMobile()) {
-      <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+      <button
+        class="navbar-toggler"
+        type="button"
+        (click)="toggleNavbar()"
+        [attr.aria-expanded]="navbarState.isNavbarOpen()"
+        aria-label="Toggle navigation"
+        aria-controls="app-navbar"
+      >
         <i class="bi bi-list"></i>
       </button>
     }
     <app-book-flix-logo class="me-5"></app-book-flix-logo>
-    <div class="d-flex gap-3 me-auto">
-      @for (item of navItems(); track item.id) {
-        <div
-          class="nav-item-wrapper"
-          (mouseenter)="onMenuHover(item.id)"
-          (mouseleave)="onMenuHoverOut()"
-        >
-          <div class="nav-item">
-            <span class="me-2">{{ item.title }}</span>
-            <i class="bi bi-chevron-down"></i>
+    @if (responsiveService.isDesktop()) {
+      <div class="d-flex gap-3 me-auto">
+        @for (item of navItems(); track item.id) {
+          <div
+            class="nav-item-wrapper"
+            (mouseenter)="onMenuHover(item.id)"
+            (mouseleave)="onMenuHoverOut()"
+          >
+            <div class="nav-item">
+              <span class="me-2">{{ item.title }}</span>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            @if (item.children?.length && activeHoveredId() === item.id) {
+              <app-dropdown-menu [item]="item" />
+            }
           </div>
-          @if (item.children?.length && activeHoveredId() === item.id) {
-            <app-dropdown-menu [item]="item" />
-          }
-        </div>
-      }
-    </div>
-    <button type="button" class="btn btn-dark btn-sm" (click)="signOut()">
-      {{ 'SignOut' | locale }}
-    </button>
+        }
+      </div>
+      <button type="button" class="btn btn-dark btn-sm" (click)="signOut()">
+        {{ 'SignOut' | locale }}
+      </button>
+    }
   </div>
 </header>

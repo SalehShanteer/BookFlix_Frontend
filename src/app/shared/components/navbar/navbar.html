@@ -1,24 +1,60 @@
-<div class="root d-flex flex-column flex-shrink-0">
-  <app-book-flix-logo></app-book-flix-logo>
-  <hr />
-  <ul class="nav nav-pills flex-column mb-auto gap-1">
-    <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="/"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <i class="bi bi-columns-gap"></i>{{ 'Dashboard' | locale }}
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/account-settings" routerLinkActive="active">
-        <i class="bi bi-gear"></i>{{ 'AccountSettings' | locale }}
-      </a>
-    </li>
-    <li class="py-2">
-      <hr />
-    </li>
-  </ul>
+<div
+  id="app-navbar"
+  class="root d-flex flex-column flex-shrink-0"
+  [class.open]="isNavbarOpen() && responsiveService.isMobile()"
+  [class.collapsed]="!isNavbarOpen() && responsiveService.isDesktop()"
+>
+  <header class="drawer-header">
+    <app-book-flix-logo></app-book-flix-logo>
+    <button
+      class="drawer-close"
+      type="button"
+      (click)="closeNavbar()"
+      aria-label="Close navigation"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </header>
+
+  <nav class="drawer-menu">
+    @for (item of navItems(); track item.id) {
+      <div class="menu-card" [class.expanded]="isExpanded(item.id)">
+        @if (item.children?.length) {
+          <div
+            class="section-header d-flex align-items-center justify-content-between"
+            role="button"
+            (click)="toggleItem(item.id)"
+          >
+            @if (isExpanded(item.id)) {
+              <span class="expand-dot"></span>
+            }
+            <span class="section-title">{{ item.title | locale }}</span>
+            <i
+              class="bi section-chevron"
+              [class.bi-chevron-down]="!isExpanded(item.id)"
+              [class.bi-chevron-up]="isExpanded(item.id)"
+            ></i>
+          </div>
+
+          @if (isExpanded(item.id)) {
+            <ul class="children-list">
+              @for (child of item.children; let childIndex = $index; track child.id) {
+                <li>
+                  <a class="child-link" [routerLink]="child.route" (click)="closeNavbar()">
+                    <span class="child-number">{{ childIndex + 1 }}.</span>
+                    {{ child.title | locale }}
+                  </a>
+                </li>
+              }
+            </ul>
+          }
+        } @else {
+          <a class="menu-link" [routerLink]="item.route" (click)="closeNavbar()">
+            <span class="section-title">{{ item.title | locale }}</span>
+            <i class="bi section-chevron bi-chevron-down" aria-hidden="true"></i>
+          </a>
+        }
+      </div>
+    }
+  </nav>
 </div>

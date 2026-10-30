@@ -1,6 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { BookFlixLogo } from '../book-flix-logo/book-flix-logo';
 import { ResponsiveService } from '../../../core/services/responsive.service';
+import { NavbarStateService } from '../../../core/services/navbar-state.service';
 import { NavItem } from '../../../core/models/Navigation/nav.model';
 import { NAV_CONFIG } from '../../../core/config/nav.config';
 import { AuthService } from '../../../core/services/auth-service';
@@ -16,11 +17,17 @@ import { DropdownMenu } from '../dropdown-menu/dropdown-menu';
 })
 export class LandingPageHeader {
   responsiveService = inject(ResponsiveService);
+  navbarState = inject(NavbarStateService);
   authService = inject(AuthService);
   router = inject(Router);
 
   navItems = signal<NavItem[]>(NAV_CONFIG);
   activeHoveredId = signal<string | null>(null);
+
+  toggleNavbar() {
+    this.navbarState.toggle();
+  }
+
   onMenuHover(itemId: string) {
     this.activeHoveredId.set(itemId);
   }

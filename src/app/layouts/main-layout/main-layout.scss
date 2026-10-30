@@ -9,9 +9,22 @@
     min-height: 0;
     background-color: var(--bf-bg-main);
 
+    &.overflow-hidden {
+      overflow: hidden;
+    }
+
     main {
       flex: 1;
       overflow-y: auto;
     }
   }
+}
+
+.navbar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 1050;
+  cursor: pointer;
 }
