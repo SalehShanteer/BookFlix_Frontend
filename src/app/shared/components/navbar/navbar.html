@@ -20,14 +20,11 @@
     @for (item of navItems(); track item.id) {
       <div class="menu-card" [class.expanded]="isExpanded(item.id)">
         @if (item.children?.length) {
-          <div
-            class="section-header d-flex align-items-center justify-content-between"
-            role="button"
-            (click)="toggleItem(item.id)"
-          >
+          <div class="section-header" role="button" (click)="toggleItem(item.id)">
             @if (isExpanded(item.id)) {
               <span class="expand-dot"></span>
             }
+            <i [class]="item.icon" class="section-icon"></i>
             <span class="section-title">{{ item.title | locale }}</span>
             <i
               class="bi section-chevron"
@@ -41,6 +38,7 @@
               @for (child of item.children; let childIndex = $index; track child.id) {
                 <li>
                   <a class="child-link" [routerLink]="child.route" (click)="closeNavbar()">
+                    <i [class]="child.icon" [style.color]="child.iconColor" class="child-icon"></i>
                     <span class="child-number">{{ childIndex + 1 }}.</span>
                     {{ child.title | locale }}
                   </a>
@@ -50,6 +48,7 @@
           }
         } @else {
           <a class="menu-link" [routerLink]="item.route" (click)="closeNavbar()">
+            <i [class]="item.icon" class="menu-link-icon"></i>
             <span class="section-title">{{ item.title | locale }}</span>
             <i class="bi section-chevron bi-chevron-down" aria-hidden="true"></i>
           </a>

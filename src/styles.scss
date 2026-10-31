@@ -20,6 +20,11 @@
   --bf-danger: #ef4444;
 }
 
+html {
+  scrollbar-color: var(--bf-bg-gray) var(--bf-bg-main);
+  scrollbar-width: thin;
+}
+
 body {
   background-color: var(--bf-bg-main);
   color: var(--bf-text-main);
