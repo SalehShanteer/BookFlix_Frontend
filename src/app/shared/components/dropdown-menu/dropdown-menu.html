@@ -1,7 +1,7 @@
 <div class="dropdown-menu">
   <span class="dropdown-menu-title">{{ item().menuTitle }}</span>
   @for (child of item().children; track child.id) {
-    <a class="dropdown-item" [routerLink]="child.route">
+    <a class="dropdown-item" [routerLink]="child.route" (click)="childClicked.emit()">
       <div class="icon-wrapper" [style.color]="child.iconColor">
         <i [class]="child.icon"></i>
       </div>

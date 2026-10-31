@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { NavItem } from '../../../core/models/Navigation/nav.model';
 import { RouterLink } from '@angular/router';
 
@@ -10,4 +10,5 @@ import { RouterLink } from '@angular/router';
 })
 export class DropdownMenu {
   item = input.required<NavItem>();
+  childClicked = output<void>();
 }
