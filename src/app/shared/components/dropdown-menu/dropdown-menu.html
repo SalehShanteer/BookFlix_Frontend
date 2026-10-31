@@ -6,8 +6,8 @@
         <i [class]="child.icon"></i>
       </div>
       <div class="dropdown-item-text">
-        <span class="dropdown-menu-item-title">{{ child.title }}</span>
-        <span class="dropdown-menu-item-description">{{ child.description }}</span>
+        <span class="dropdown-menu-item-title">{{ child.title | locale }}</span>
+        <span class="dropdown-menu-item-description">{{ getLocalized(child.description) }}</span>
       </div>
     </a>
   }

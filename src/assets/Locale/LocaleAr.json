@@ -38,5 +38,9 @@
   "UsernameUsed": "اسم المستخدم مستخدم من قبل",
   "PasswordWeak": "كلمة المرور ضعيفة. استخدم 8 أحرف على الأقل تتضمن حرفًا كبيرًا وصغيرًا ورقمًا ورمزًا",
   "EmailRequired": "البريد الإلكتروني مطلوب",
-  "PasswordRequired": "كلمة المرور مطلوبة"
+  "PasswordRequired": "كلمة المرور مطلوبة",
+  "AdminDashboard": "لوحة التحكم المسؤول",
+  "BookFlixLogoBook": "كتاب",
+  "BookFlixLogoFlix": "فليكس",
+  "UserDashboard": "مرحبًا بك في لوحة القيادة الخاصة بك"
 }

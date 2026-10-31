@@ -38,5 +38,9 @@
   "UsernameUsed": "Username is already taken",
   "PasswordWeak": "Password is too weak. Use at least 8 characters with upper, lower, number and symbol",
   "EmailRequired": "Email is required",
-  "PasswordRequired": "Password is required"
+  "PasswordRequired": "Password is required",
+  "AdminDashboard": "Admin Dashboard",
+  "BookFlixLogoBook": "Book",
+  "BookFlixLogoFlix": "Flix",
+  "UserDashboard": "Welcome to your dashboard"
 }

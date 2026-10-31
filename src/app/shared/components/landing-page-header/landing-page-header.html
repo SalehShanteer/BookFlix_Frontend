@@ -23,7 +23,7 @@
           >
             <div class="nav-item">
               <i [class]="item.icon" class="nav-item-icon"></i>
-              <span class="me-2">{{ item.title }}</span>
+              <span class="me-2">{{ item.title | locale }}</span>
               <i class="bi bi-chevron-down"></i>
             </div>
             @if (item.children?.length && activeHoveredId() === item.id) {
