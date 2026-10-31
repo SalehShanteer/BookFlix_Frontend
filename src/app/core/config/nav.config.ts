@@ -62,13 +62,13 @@ export const NAV_CONFIG: NavItem[] = [
     id: 'account-settings',
     title: 'Account Settings',
     menuTitle: 'Sub-Pages',
-    route: '/personal-information',
+    route: '/account-settings/personal-information',
     icon: 'bi bi-gear',
     children: [
       {
         id: 'personal-info',
         title: 'Personal Information',
-        route: '/personal-information',
+        route: '/account-settings/personal-information',
         description: 'Update profile display name and contact email.',
         icon: 'bi bi-person',
         iconColor: '#06b6d4',
@@ -76,7 +76,7 @@ export const NAV_CONFIG: NavItem[] = [
       {
         id: 'security',
         title: 'Security & Password',
-        route: '/account-security',
+        route: '/account-settings/account-security',
         description: 'Change password and secure your account.',
         icon: 'bi bi-shield-lock',
         iconColor: '#f59e0b',

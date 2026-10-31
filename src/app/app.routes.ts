@@ -7,6 +7,8 @@ import { SignUp } from './features/auth/signup/signup';
 import { ServerError } from './shared/components/server-error/server-error';
 import { authGuard } from './core/guards/auth-guard';
 import { AccountSettings } from './features/settings/account-settings/account-settings';
+import { PersonalInformation } from './features/settings/personal-information/personal-information';
+import { SecurityPassword } from './features/settings/security-password/security-password';
 
 export const routes: Routes = [
   {
@@ -15,7 +17,11 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', component: UserDashboard },
-      { path: 'account-settings', component: AccountSettings },
+      { path: 'account-settings', component: AccountSettings, children: [
+        { path: '', component: PersonalInformation },
+        { path: 'personal-information', component: PersonalInformation },
+        { path: 'account-security', component: SecurityPassword },
+      ]},
     ],
   },
   {

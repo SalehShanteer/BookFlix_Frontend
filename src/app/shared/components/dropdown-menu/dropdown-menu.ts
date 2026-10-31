@@ -1,9 +1,10 @@
 import { Component, input } from '@angular/core';
 import { NavItem } from '../../../core/models/Navigation/nav.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dropdown-menu',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './dropdown-menu.html',
   styleUrl: './dropdown-menu.scss',
 })

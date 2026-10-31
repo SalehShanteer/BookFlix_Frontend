@@ -31,7 +31,9 @@
     align-items: center;
     padding: 8px;
     border-radius: 8px;
-    cursor: default;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
     position: relative;
 
     &::before {
