@@ -20,7 +20,11 @@
     @for (item of navItems(); track item.id) {
       <div class="menu-card" [class.expanded]="isExpanded(item.id)">
         @if (item.children?.length) {
-          <div class="section-header flex-center-between" role="button" (click)="toggleItem(item.id)">
+          <div
+            class="section-header flex-center-between"
+            role="button"
+            (click)="toggleItem(item.id)"
+          >
             @if (isExpanded(item.id)) {
               <span class="expand-dot"></span>
             }
@@ -47,7 +51,11 @@
             </ul>
           }
         } @else {
-          <a class="menu-link flex-center-between" [routerLink]="item.route" (click)="closeNavbar()">
+          <a
+            class="menu-link flex-center-between"
+            [routerLink]="item.route"
+            (click)="closeNavbar()"
+          >
             <i [class]="item.icon" class="menu-link-icon"></i>
             <span class="section-title">{{ item.title | locale }}</span>
             <i class="bi section-chevron bi-chevron-down" aria-hidden="true"></i>
@@ -56,5 +64,11 @@
       </div>
     }
   </nav>
-</div>
 
+  <div class="sign-out-section">
+    <button class="sign-out-btn" (click)="signOut()">
+      <i class="bi bi-box-arrow-right"></i>
+      <span>{{ 'SignOut' | locale }}</span>
+    </button>
+  </div>
+</div>
