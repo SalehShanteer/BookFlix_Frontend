@@ -4,7 +4,7 @@
   [class.open]="isNavbarOpen() && responsiveService.isMobile()"
   [class.collapsed]="!isNavbarOpen() && responsiveService.isDesktop()"
 >
-  <header class="drawer-header">
+  <header class="drawer-header flex-center-between">
     <app-book-flix-logo></app-book-flix-logo>
     <button
       class="drawer-close"
@@ -20,7 +20,7 @@
     @for (item of navItems(); track item.id) {
       <div class="menu-card" [class.expanded]="isExpanded(item.id)">
         @if (item.children?.length) {
-          <div class="section-header" role="button" (click)="toggleItem(item.id)">
+          <div class="section-header flex-center-between" role="button" (click)="toggleItem(item.id)">
             @if (isExpanded(item.id)) {
               <span class="expand-dot"></span>
             }
@@ -47,7 +47,7 @@
             </ul>
           }
         } @else {
-          <a class="menu-link" [routerLink]="item.route" (click)="closeNavbar()">
+          <a class="menu-link flex-center-between" [routerLink]="item.route" (click)="closeNavbar()">
             <i [class]="item.icon" class="menu-link-icon"></i>
             <span class="section-title">{{ item.title | locale }}</span>
             <i class="bi section-chevron bi-chevron-down" aria-hidden="true"></i>
@@ -57,3 +57,4 @@
     }
   </nav>
 </div>
+

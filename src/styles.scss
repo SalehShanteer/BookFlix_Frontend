@@ -115,3 +115,22 @@ input {
   height: 1rem;
   border-width: 2px;
 }
+
+/* Flexbox utilities - reusable across components */
+.flex-center-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
