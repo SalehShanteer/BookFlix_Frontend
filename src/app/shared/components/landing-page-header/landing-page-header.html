@@ -32,6 +32,26 @@
           </div>
         }
       </div>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button
+          type="button"
+          class="lang-option"
+          [class.active]="currentLang() === 'en'"
+          (click)="setLang('en')"
+          aria-label="Switch to English"
+        >
+          <i class="bi bi-translate"></i>EN
+        </button>
+        <button
+          type="button"
+          class="lang-option"
+          [class.active]="currentLang() === 'ar'"
+          (click)="setLang('ar')"
+          aria-label="Switch to Arabic"
+        >
+          <i class="bi bi-translate"></i>AR
+        </button>
+      </div>
       <button type="button" class="btn btn-dark btn-sm" (click)="signOut()">
         {{ 'SignOut' | locale }}
       </button>

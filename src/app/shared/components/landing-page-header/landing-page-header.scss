@@ -64,3 +64,50 @@
     line-height: 1;
   }
 }
+
+/* Language switcher */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--bf-border-input);
+  gap: 2px;
+
+  .lang-option {
+    border: none;
+    background: transparent;
+    color: var(--bf-text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    i {
+      font-size: 0.9rem;
+    }
+
+    &:hover {
+      color: var(--bf-text-main);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    &.active {
+      background: var(--bf-primary);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(var(--bf-primary-rgb), 0.4);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--bf-primary);
+      outline-offset: 2px;
+    }
+  }
+}

@@ -7,6 +7,7 @@ import { NAV_CONFIG } from '../../../core/config/nav.config';
 import { AuthService } from '../../../core/services/auth-service';
 import { Router } from '@angular/router';
 import { LocalePipe } from '../../pipes/locale-pipe';
+import { LocaleService } from '../../../core/services/locale-service';
 import { DropdownMenu } from '../dropdown-menu/dropdown-menu';
 
 @Component({
@@ -20,9 +21,11 @@ export class LandingPageHeader {
   navbarState = inject(NavbarStateService);
   authService = inject(AuthService);
   router = inject(Router);
+  localeService = inject(LocaleService);
 
   navItems = signal<NavItem[]>(NAV_CONFIG);
   activeHoveredId = signal<string | null>(null);
+  currentLang = signal<string>(localStorage.getItem('language') ?? 'en');
 
   toggleNavbar() {
     this.navbarState.toggle();
@@ -45,5 +48,15 @@ export class LandingPageHeader {
         this.authService.forceLogout();
       },
     });
+  }
+
+  toggleLang() {
+    this.localeService.toggleLanguage();
+    this.currentLang.set(localStorage.getItem('language') ?? 'en');
+  }
+
+  setLang(lang: string) {
+    this.localeService.setLanguage(lang);
+    this.currentLang.set(lang);
   }
 }

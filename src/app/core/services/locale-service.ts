@@ -7,7 +7,9 @@ import localeArData from '../../../assets/Locale/LocaleAr.json';
   providedIn: 'root',
 })
 export class LocaleService {
-  private currentLanguage: string = 'en';
+  private readonly englishCode: string = 'en';
+  private readonly arabicCode: string = 'ar';
+  private currentLanguage: string = this.englishCode;
   private localeEn: Record<string, string> = localeEnData;
   private localeAr: Record<string, string> = localeArData;
   constructor(private directionService: DirectionService) {}
@@ -15,11 +17,26 @@ export class LocaleService {
   loadLanguage(): Promise<void> {
     return new Promise((resolve) => {
       const savedLanguage = localStorage.getItem('language');
-      this.currentLanguage = savedLanguage ?? 'en';
+      this.currentLanguage = savedLanguage ?? this.englishCode;
       this.directionService.setDirection(this.currentLanguage);
       console.log('Loaded language:', this.currentLanguage);
       resolve();
     });
+  }
+
+  setLanguage(language: string): void {
+    const selectedLanguage =
+      language === this.arabicCode ? this.arabicCode : this.englishCode;
+    localStorage.setItem('language', selectedLanguage);
+    this.loadLanguage();
+  }
+
+  toggleLanguage(): void {
+    const selectedLanguage =
+      localStorage.getItem('language') === this.englishCode
+        ? this.arabicCode
+        : this.englishCode;
+    this.setLanguage(selectedLanguage);
   }
 
   getLocale(key: string): string {
@@ -27,5 +44,9 @@ export class LocaleService {
     return this.currentLanguage === 'ar'
       ? (this.localeAr[key] ?? key)
       : (this.localeEn[key] ?? key);
+  }
+
+  getCurrentLanguage(): string {
+    return this.currentLanguage;
   }
 }

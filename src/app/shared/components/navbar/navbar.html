@@ -66,6 +66,28 @@
   </nav>
 
   <div class="sign-out-section">
+    <div class="lang-switch lang-switch--full" role="group" aria-label="Language">
+      <button
+        type="button"
+        class="lang-option"
+        [class.active]="currentLang() === 'en'"
+        (click)="setLang('en')"
+        aria-label="Switch to English"
+      >
+        <i class="bi bi-globe"></i>
+        <span>English</span>
+      </button>
+      <button
+        type="button"
+        class="lang-option"
+        [class.active]="currentLang() === 'ar'"
+        (click)="setLang('ar')"
+        aria-label="Switch to Arabic"
+      >
+        <i class="bi bi-globe2"></i>
+        <span>العربية</span>
+      </button>
+    </div>
     <button class="sign-out-btn" (click)="signOut()">
       <i class="bi bi-box-arrow-right"></i>
       <span>{{ 'SignOut' | locale }}</span>

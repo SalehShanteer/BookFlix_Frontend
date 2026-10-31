@@ -1,6 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { LocalePipe } from '../../pipes/locale-pipe';
+import { LocaleService } from '../../../core/services/locale-service';
 import { AuthService } from '../../../core/services/auth-service';
 import { BookFlixLogo } from '../book-flix-logo/book-flix-logo';
 import { NavbarStateService } from '../../../core/services/navbar-state.service';
@@ -19,10 +20,12 @@ export class Navbar {
   responsiveService = inject(ResponsiveService);
   authService = inject(AuthService);
   router = inject(Router);
+  localeService = inject(LocaleService);
 
   readonly isNavbarOpen = this.navbarState.isNavbarOpen;
   readonly navItems = signal<NavItem[]>(NAV_CONFIG);
   readonly expandedId = signal<string | null>(null);
+  currentLang = signal<string>(localStorage.getItem('language') ?? 'en');
 
   constructor() {
     if (this.responsiveService.isMobile()) {
@@ -55,5 +58,15 @@ export class Navbar {
         this.authService.forceLogout();
       },
     });
+  }
+
+  toggleLang() {
+    this.localeService.toggleLanguage();
+    this.currentLang.set(localStorage.getItem('language') ?? 'en');
+  }
+
+  setLang(lang: string) {
+    this.localeService.setLanguage(lang);
+    this.currentLang.set(lang);
   }
 }
