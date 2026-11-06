@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth-service';
 import { RouterLink } from '@angular/router';
@@ -12,6 +12,7 @@ import { FormError } from '../../../shared/components/form-error/form-error';
 import { StrongPasswordValidator } from '../../../shared/validators/strong-password.validator';
 import { EmailValidator } from '../../../shared/validators/email.validator';
 import { BookFlixLogo } from '../../../shared/components/book-flix-logo/book-flix-logo';
+import { PasswordHelper } from '../../../shared/helpers/password-helper';
 
 @Component({
   selector: 'app-register',
@@ -30,6 +31,15 @@ import { BookFlixLogo } from '../../../shared/components/book-flix-logo/book-fli
 export class SignUp extends BaseComponent {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
+
+  readonly strengthSegments = [1, 2, 3, 4];
+  private passwordStrengthRaw = signal<{
+    score: number;
+    label: string;
+    color: string;
+  }>({ score: 0, label: '', color: 'var(--bf-text-muted)' });
+  readonly passwordStrength = computed(() => this.passwordStrengthRaw());
+
   registerForm: FormGroup = this.fb.group(
     {
       username: ['', Validators.required],
@@ -39,6 +49,13 @@ export class SignUp extends BaseComponent {
     },
     { validators: PasswordMatchValidator },
   );
+
+  constructor() {
+    super();
+    this.registerForm.get('newPassword')?.valueChanges.subscribe((value) => {
+      this.passwordStrengthRaw.set(PasswordHelper.getPasswordStrength(value ?? ''));
+    });
+  }
 
   private showDashboardScreen() {
     console.log('register successful');

@@ -1,2 +1,38 @@
-@use '../login/login.scss' as *;
+@use '../auth-shell' as *;
+
+.password-strength {
+  margin-top: 0.35rem;
+
+  .password-strength-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--bf-text-muted);
+
+    .password-strength-value {
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+  }
+
+  .password-strength-bar {
+    display: flex;
+    gap: 4px;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+
+    .strength-segment {
+      flex: 1;
+      height: 100%;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.12);
+      transition: background-color 0.3s ease;
+    }
+  }
+}
 

@@ -9,7 +9,14 @@
     </header>
 
     <form [formGroup]="registerForm" (ngSubmit)="onSignUp()" novalidate>
-      <div class="mb-3">
+      @if (serverError()) {
+        <div class="auth-alert auth-alert-error">
+          <i class="bi bi-exclamation-circle-fill"></i>
+          <span>{{ serverError()! | locale }}</span>
+        </div>
+      }
+
+      <div class="mb-2">
         <label for="username" class="form-label">{{ 'EnterUsername' | locale }}</label>
         <div class="auth-input-group">
           <i class="bi bi-person input-icon"></i>
@@ -25,7 +32,7 @@
         <app-form-error [control]="registerForm.get('username')"></app-form-error>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-2">
         <label for="email" class="form-label">{{ 'EmailAddress' | locale }}</label>
         <div class="auth-input-group">
           <i class="bi bi-envelope input-icon"></i>
@@ -41,7 +48,7 @@
         <app-form-error [control]="registerForm.get('email')"></app-form-error>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-2">
         <label for="newPassword" class="form-label">{{ 'Password' | locale }}</label>
         <app-password-field
           id="newPassword"
@@ -49,9 +56,32 @@
           placeholder="EnterPassword"
         />
         <app-form-error [control]="registerForm.get('newPassword')"></app-form-error>
+
+        <div class="password-strength">
+          <div class="password-strength-label">
+            <span>{{ 'PasswordStrength' | locale }}</span>
+            @if (passwordStrength().label) {
+              <span class="password-strength-value" [style.color]="passwordStrength().color">
+                {{ passwordStrength().label | locale }}
+              </span>
+            }
+          </div>
+          <div class="password-strength-bar">
+            @for (segment of strengthSegments; track $index) {
+              <div
+                class="strength-segment"
+                [style.background-color]="
+                  segment <= passwordStrength().score
+                    ? passwordStrength().color
+                    : 'rgba(255, 255, 255, 0.12)'
+                "
+              ></div>
+            }
+          </div>
+        </div>
       </div>
 
-      <div class="mb-4">
+      <div class="mb-3">
         <label for="confirmPassword" class="form-label">{{ 'ConfirmPassword' | locale }}</label>
         <app-password-field
           id="confirmPassword"
@@ -67,12 +97,13 @@
         type="submit"
         [isLoading]="isLoading()"
         aria-label="SignUp"
+        class="w-100"
       >
         {{ 'SignUp' | locale }}
       </button>
 
       <footer class="auth-footer">
-        <span class="text-muted me-2">{{ 'SignInToAccount' | locale }}</span>
+        <span class="text-muted me-2">{{ 'AlreadyHaveAccount' | locale }}</span>
         <a routerLink="/login" class="btn-link fw-semibold">{{ 'SignIn' | locale }}</a>
       </footer>
     </form>

@@ -9,7 +9,14 @@
     </header>
 
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
-      <div class="mb-3">
+      @if (serverError()) {
+        <div class="auth-alert auth-alert-error">
+          <i class="bi bi-exclamation-circle-fill"></i>
+          <span>{{ serverError()! | locale }}</span>
+        </div>
+      }
+
+      <div class="mb-2">
         <label for="email" class="form-label">{{ 'EmailAddress' | locale }}</label>
         <div class="auth-input-group">
           <i class="bi bi-envelope input-icon"></i>
@@ -25,7 +32,7 @@
         <app-form-error [control]="loginForm.get('email')"></app-form-error>
       </div>
 
-      <div class="mb-4">
+      <div class="mb-3">
         <div class="d-flex justify-content-between align-items-center mb-1">
           <label for="password" class="form-label mb-0">{{ 'Password' | locale }}</label>
           <a routerLink="/forget-password" class="btn-link small">
@@ -38,7 +45,6 @@
           placeholder="EnterPassword"
         />
         <app-form-error [control]="loginForm.get('password')"></app-form-error>
-        <app-form-error [customError]="serverError()"></app-form-error>
       </div>
 
       <button
@@ -46,6 +52,7 @@
         type="submit"
         [isLoading]="isLoading()"
         aria-label="Login"
+        class="w-100"
       >
         {{ 'Login' | locale }}
       </button>
