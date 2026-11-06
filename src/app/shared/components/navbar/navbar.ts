@@ -14,6 +14,9 @@ import { NavItem } from '../../../core/models/Navigation/nav.model';
   imports: [LocalePipe, RouterModule, BookFlixLogo],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
+  host: {
+    '[attr.dir]': 'currentLang() === "ar" ? "rtl" : "ltr"',
+  },
 })
 export class Navbar {
   navbarState = inject(NavbarStateService);
