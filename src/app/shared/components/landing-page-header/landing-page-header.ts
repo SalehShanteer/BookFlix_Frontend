@@ -25,7 +25,7 @@ export class LandingPageHeader {
 
   navItems = signal<NavItem[]>(NAV_CONFIG);
   activeHoveredId = signal<string | null>(null);
-  currentLang = signal<string>(localStorage.getItem('language') ?? 'en');
+  readonly currentLang = this.localeService.currentLanguage;
 
   toggleNavbar() {
     this.navbarState.toggle();
@@ -52,11 +52,9 @@ export class LandingPageHeader {
 
   toggleLang() {
     this.localeService.toggleLanguage();
-    this.currentLang.set(localStorage.getItem('language') ?? 'en');
   }
 
   setLang(lang: string) {
     this.localeService.setLanguage(lang);
-    this.currentLang.set(lang);
   }
 }

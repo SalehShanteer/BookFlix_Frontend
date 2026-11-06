@@ -17,6 +17,8 @@
   "Password": "Password",
   "WeakPassword": "Password is too weak",
   "PersonalInformation": "Personal Information",
+  "PersonalInformationDescription": "Update profile display name and contact email.",
+  "SecurityPasswordDescription": "Change password and secure your account.",
   "RegisterCardMessage": "Join us and start your experience now!",
   "RegisterNow": "Don't have an account? Register Now",
   "Security&Password": "Security & Password",

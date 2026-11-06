@@ -42,11 +42,29 @@ body {
     sans-serif;
 }
 
+[dir='rtl'] body,
+[dir='rtl'] input,
+[dir='rtl'] button,
+[dir='rtl'] select,
+[dir='rtl'] textarea {
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Tahoma,
+    Arial,
+    sans-serif;
+}
+
 .error-text {
   font-size: 11px;
   margin: 4px 0 0 10px;
   color: var(--bf-danger);
   font-weight: 500;
+
+  [dir='rtl'] & {
+    margin: 4px 10px 0 0;
+  }
 }
 
 .text-main {

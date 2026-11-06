@@ -17,6 +17,8 @@
   "Password": "كلمة المرور",
   "WeakPassword": "كلمة المرور ضعيفة جدًا",
   "PersonalInformation": "المعلومات الشخصية",
+  "PersonalInformationDescription": "تحديث اسم العرض والبريد الإلكتروني للتواصل.",
+  "SecurityPasswordDescription": "تغيير كلمة المرور وتأمين حسابك.",
   "RegisterCardMessage": "انضم إلينا وابدأ تجربتك الآن!",
   "RegisterNow": "ليس لديك حساب؟ سجّل الآن",
   "Security&Password": "الأمان وكلمة المرور",

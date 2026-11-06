@@ -1,8 +1,8 @@
 <header>
-  <div class="d-flex p-2">
+  <div class="d-flex align-items-center p-2">
     @if (responsiveService.isMobile()) {
       <button
-        class="navbar-toggler"
+        class="navbar-toggler me-3"
         type="button"
         (click)="toggleNavbar()"
         [attr.aria-expanded]="navbarState.isNavbarOpen()"
@@ -12,7 +12,7 @@
         <i class="bi bi-list"></i>
       </button>
     }
-    <app-book-flix-logo class="me-5"></app-book-flix-logo>
+    <app-book-flix-logo class="me-4"></app-book-flix-logo>
     @if (responsiveService.isDesktop()) {
       <div class="d-flex gap-3 me-auto">
         @for (item of navItems(); track item.id) {
