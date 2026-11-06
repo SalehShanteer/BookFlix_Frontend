@@ -1,3 +1,6 @@
 @if (shouldShowError()) {
-  <p class="error-text">{{ errorMessage() }}</p>
+  <div class="error-text">
+    <i class="bi bi-exclamation-circle-fill"></i>
+    <span>{{ errorMessage() }}</span>
+  </div>
 }

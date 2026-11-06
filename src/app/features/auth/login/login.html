@@ -1,37 +1,59 @@
-<main class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
-  <section class="card shadow-lg p-4">
-    <div class="text-center mb-4">
-      <h1 class="h3 text-main fw-bold">{{ 'WelcomeBack' | locale }}</h1>
-      <p class="text-main">{{ 'SignInToAccount' | locale }}</p>
-    </div>
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+<main class="auth-container">
+  <section class="auth-card">
+    <header class="auth-header">
+      <div class="auth-logo-badge">
+        <app-book-flix-logo></app-book-flix-logo>
+      </div>
+      <h1 class="auth-title">{{ 'WelcomeBack' | locale }}</h1>
+      <p class="auth-subtitle">{{ 'SignInToAccount' | locale }}</p>
+    </header>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
       <div class="mb-3">
-        <label for="email" class="form-label text-main">{{ 'EmailAddress' | locale }}</label>
-        <input
-          id="email"
-          class="form-control"
-          type="email"
-          formControlName="email"
-          placeholder="name@example.com"
-        />
+        <label for="email" class="form-label">{{ 'EmailAddress' | locale }}</label>
+        <div class="auth-input-group">
+          <i class="bi bi-envelope input-icon"></i>
+          <input
+            id="email"
+            class="form-control"
+            type="email"
+            formControlName="email"
+            placeholder="name@example.com"
+            autocomplete="email"
+          />
+        </div>
         <app-form-error [control]="loginForm.get('email')"></app-form-error>
       </div>
-      <div class="mb-3">
+
+      <div class="mb-4">
         <div class="d-flex justify-content-between align-items-center mb-1">
-          <label for="password" class="form-label text-main mb-0">{{ 'Password' | locale }}</label>
-          <a routerLink="/forget-password" class="btn-link p-0"> {{ 'ForgetPassword' | locale }}</a>
+          <label for="password" class="form-label mb-0">{{ 'Password' | locale }}</label>
+          <a routerLink="/forget-password" class="btn-link small">
+            {{ 'ForgetPassword' | locale }}
+          </a>
         </div>
-        <app-password-field id="password" formControlName="password" placeholder="EnterPassword" />
+        <app-password-field
+          id="password"
+          formControlName="password"
+          placeholder="EnterPassword"
+        />
         <app-form-error [control]="loginForm.get('password')"></app-form-error>
         <app-form-error [customError]="serverError()"></app-form-error>
       </div>
-      <button app-action-button type="submit" [isLoading]="isLoading()" aria-label="Login">
+
+      <button
+        app-action-button
+        type="submit"
+        [isLoading]="isLoading()"
+        aria-label="Login"
+      >
         {{ 'Login' | locale }}
       </button>
-      <div class="mt-3 d-flex align-items-center justify-content-center">
-        <span class="text-main me-1">{{ 'DontHaveAccount' | locale }}</span>
-        <a routerLink="/signup" class="btn-link p-0"> {{ 'SignUp' | locale }}</a>
-      </div>
+
+      <footer class="auth-footer">
+        <span class="text-muted me-2">{{ 'DontHaveAccount' | locale }}</span>
+        <a routerLink="/signup" class="btn-link fw-semibold">{{ 'SignUp' | locale }}</a>
+      </footer>
     </form>
   </section>
 </main>

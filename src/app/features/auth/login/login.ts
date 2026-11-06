@@ -9,10 +9,19 @@ import { FormError } from '../../../shared/components/form-error/form-error';
 import { EmailValidator } from '../../../shared/validators/email.validator';
 import { BaseComponent } from '../../../shared/base/base-component';
 import { ActionButton } from '../../../shared/components/action-button/action-button';
+import { BookFlixLogo } from '../../../shared/components/book-flix-logo/book-flix-logo';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, PasswordField, LocalePipe, RouterLink, FormError, ActionButton],
+  imports: [
+    ReactiveFormsModule,
+    PasswordField,
+    LocalePipe,
+    RouterLink,
+    FormError,
+    ActionButton,
+    BookFlixLogo,
+  ],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })

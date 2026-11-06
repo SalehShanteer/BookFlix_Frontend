@@ -57,13 +57,18 @@ body {
 }
 
 .error-text {
-  font-size: 11px;
-  margin: 4px 0 0 10px;
+  font-size: 0.8rem;
+  margin-top: 6px;
+  margin-inline-start: 4px;
   color: var(--bf-danger);
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 
-  [dir='rtl'] & {
-    margin: 4px 10px 0 0;
+  i {
+    font-size: 0.85rem;
+    flex-shrink: 0;
   }
 }
 
@@ -92,24 +97,28 @@ input {
   background-color: var(--bf-bg-input) !important;
   border: 1px solid var(--bf-border-input) !important;
   color: var(--bf-text-main) !important;
+  border-radius: 10px !important;
+  padding: 0.65rem 0.9rem !important;
+  font-size: 0.95rem;
   transition:
     border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
 
   &::placeholder {
     color: var(--bf-text-muted) !important;
-    opacity: 0.7;
+    opacity: 0.6;
   }
 
   &:hover {
-    border-color: rgba(var(--bf-primary-rgb), 0.5) !important;
+    border-color: rgba(var(--bf-primary-rgb), 0.45) !important;
   }
 
   &:focus {
     background-color: var(--bf-bg-input) !important;
     border-color: var(--bf-primary) !important;
     color: var(--bf-text-main) !important;
-    box-shadow: 0 0 0 0.25rem rgba(var(--bf-primary-rgb), 0.2) !important;
+    box-shadow: 0 0 0 3px rgba(var(--bf-primary-rgb), 0.22) !important;
   }
 
   &:-webkit-autofill,

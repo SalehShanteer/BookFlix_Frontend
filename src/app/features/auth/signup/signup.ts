@@ -11,10 +11,19 @@ import { ActionButton } from '../../../shared/components/action-button/action-bu
 import { FormError } from '../../../shared/components/form-error/form-error';
 import { StrongPasswordValidator } from '../../../shared/validators/strong-password.validator';
 import { EmailValidator } from '../../../shared/validators/email.validator';
+import { BookFlixLogo } from '../../../shared/components/book-flix-logo/book-flix-logo';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, LocalePipe, PasswordField, RouterLink, ActionButton, FormError],
+  imports: [
+    ReactiveFormsModule,
+    LocalePipe,
+    PasswordField,
+    RouterLink,
+    ActionButton,
+    FormError,
+    BookFlixLogo,
+  ],
   templateUrl: './signup.html',
   styleUrl: './signup.scss',
 })
