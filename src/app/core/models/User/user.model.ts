@@ -3,8 +3,5 @@ export interface User {
   username: string;
   email: string;
   roles: any[];
-  registrationDate?: string;
-  createdAt?: string;
-  memberSince?: string;
+  createdAt: string;
 }
-

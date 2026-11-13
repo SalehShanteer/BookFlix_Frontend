@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal, inject } from '@angular/core';
 import { UserService } from '../../../core/services/user-service';
 import { Subscription } from 'rxjs';
 
@@ -13,8 +13,7 @@ export class ProfileImage implements OnInit, OnDestroy {
   isUploading = signal<boolean>(false);
 
   private imageSubscription?: Subscription;
-
-  constructor(private userService: UserService) { }
+  private userService = inject(UserService)
 
   ngOnInit(): void {
     this.loadProfileImage();

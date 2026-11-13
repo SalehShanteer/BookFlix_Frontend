@@ -26,7 +26,6 @@
 
         <form [formGroup]="infoForm" (ngSubmit)="onSave()" novalidate>
           <div class="row g-3">
-            <!-- Username (Editable) -->
             <div class="col-12 col-md-6">
               <label for="username" class="form-label text-white">{{ 'Username' | locale }}</label>
               <div class="input-group-custom">
@@ -42,7 +41,6 @@
               <app-form-error [control]="infoForm.get('username')"></app-form-error>
             </div>
 
-            <!-- Email (Editable) -->
             <div class="col-12 col-md-6">
               <label for="email" class="form-label text-white">{{ 'EmailAddress' | locale }}</label>
               <div class="input-group-custom">
@@ -58,7 +56,6 @@
               <app-form-error [control]="infoForm.get('email')"></app-form-error>
             </div>
 
-            <!-- Metadata Banner (Registration & System UUID) -->
             <div class="col-12 mt-4">
               <div class="metadata-banner d-flex align-items-center justify-content-between flex-wrap gap-3">
                 <div class="d-flex align-items-center gap-2 registration-info">
@@ -73,7 +70,6 @@
               </div>
             </div>
 
-            <!-- Action buttons -->
             <div class="col-12 d-flex justify-content-end mt-4">
               <button
                 app-action-button

@@ -59,7 +59,7 @@ export class PersonalInformation implements OnInit {
   }
 
   get registrationFormatted(): string {
-    const raw = this.user()?.registrationDate || this.user()?.createdAt || this.user()?.memberSince;
+    const raw = this.user()?.createdAt;
     if (!raw) return 'July 2024';
     const date = new Date(raw);
     if (isNaN(date.getTime())) return raw;
