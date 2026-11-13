@@ -1,14 +1,93 @@
 <div class="container-fluid p-0">
   <div class="row g-4">
-    <div class="col">
+    <div class="col-12">
       <div class="section">
-        <div class="d-flex align-items-center gap-3">
+        <div class="d-flex align-items-center gap-3 mb-4">
           <app-icon-badge icon="bi-person-circle"></app-icon-badge>
           <div>
             <h5 class="text-white mb-0">{{ 'PersonalInformation' | locale }}</h5>
-            <p class="text-white mb-0">{{ 'PersonalInformationDescription' | locale }}</p>
+            <p class="text-muted mb-0">{{ 'PersonalInformationDescription' | locale }}</p>
           </div>
         </div>
+
+        @if (serverError()) {
+          <div class="alert alert-danger d-flex align-items-center gap-2 mb-4" role="alert">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <div>{{ serverError()! | locale }}</div>
+          </div>
+        }
+
+        @if (successMessage()) {
+          <div class="alert alert-success d-flex align-items-center gap-2 mb-4" role="alert">
+            <i class="bi bi-check-circle-fill"></i>
+            <div>{{ successMessage()! | locale }}</div>
+          </div>
+        }
+
+        <form [formGroup]="infoForm" (ngSubmit)="onSave()" novalidate>
+          <div class="row g-3">
+            <!-- Username (Editable) -->
+            <div class="col-12 col-md-6">
+              <label for="username" class="form-label text-white">{{ 'Username' | locale }}</label>
+              <div class="input-group-custom">
+                <i class="bi bi-person input-icon"></i>
+                <input
+                  id="username"
+                  type="text"
+                  class="form-control"
+                  formControlName="username"
+                  placeholder="{{ 'EnterUsername' | locale }}"
+                />
+              </div>
+              <app-form-error [control]="infoForm.get('username')"></app-form-error>
+            </div>
+
+            <!-- Email (Editable) -->
+            <div class="col-12 col-md-6">
+              <label for="email" class="form-label text-white">{{ 'EmailAddress' | locale }}</label>
+              <div class="input-group-custom">
+                <i class="bi bi-envelope input-icon"></i>
+                <input
+                  id="email"
+                  type="email"
+                  class="form-control"
+                  formControlName="email"
+                  placeholder="{{ 'EnterEmail' | locale }}"
+                />
+              </div>
+              <app-form-error [control]="infoForm.get('email')"></app-form-error>
+            </div>
+
+            <!-- Metadata Banner (Registration & System UUID) -->
+            <div class="col-12 mt-4">
+              <div class="metadata-banner d-flex align-items-center justify-content-between flex-wrap gap-3">
+                <div class="d-flex align-items-center gap-2 registration-info">
+                  <i class="bi bi-info-circle info-icon"></i>
+                  <span class="metadata-label">{{ 'MemberRegistration' | locale }}:</span>
+                  <span class="metadata-value">{{ registrationFormatted }}</span>
+                </div>
+                <div class="uuid-badge d-flex align-items-center gap-2">
+                  <span class="uuid-label">{{ 'SystemUUID' | locale }}:</span>
+                  <span class="uuid-value">{{ user()?.id || '8f9b2a10-4c3d-4e5f-9a1b-2c3d4e5f6a7b' }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="col-12 d-flex justify-content-end mt-4">
+              <button
+                app-action-button
+                type="submit"
+                [isLoading]="isSaving()"
+                [disabled]="isLoadingUser() || !infoForm.valid || !isFormChanged"
+                [fullWidth]="false"
+                class="px-4"
+              >
+                {{ 'SaveChanges' | locale }}
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

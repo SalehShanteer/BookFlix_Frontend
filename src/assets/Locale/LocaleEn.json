@@ -67,5 +67,11 @@
   "Access downloaded books and reading lists.": "Access downloaded books and reading lists.",
   "Saved titles for later reading.": "Saved titles for later reading.",
   "Update profile display name and contact email.": "Update profile display name and contact email.",
-  "Change password and secure your account.": "Change password and secure your account."
+  "Change password and secure your account.": "Change password and secure your account.",
+  "UserId": "User ID",
+  "MemberRegistration": "Member Registration",
+  "SystemUUID": "System UUID",
+  "Username": "Username",
+  "SaveChanges": "Save Changes",
+  "ProfileUpdatedSuccessfully": "Profile updated successfully"
 }

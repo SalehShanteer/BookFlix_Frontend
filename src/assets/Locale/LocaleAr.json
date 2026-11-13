@@ -67,5 +67,11 @@
   "Access downloaded books and reading lists.": "الوصول إلى الكتب التي تم تنزيلها وقوائم القراءة.",
   "Saved titles for later reading.": "العناوين المحفوظة للقراءة لاحقًا.",
   "Update profile display name and contact email.": "تحديث اسم العرض والبريد الإلكتروني للتواصل.",
-  "Change password and secure your account.": "تغيير كلمة المرور وتأمين حسابك."
+  "Change password and secure your account.": "تغيير كلمة المرور وتأمين حسابك.",
+  "UserId": "معرف المستخدم",
+  "MemberRegistration": "تسجيل العضوية",
+  "SystemUUID": "معرف النظام (UUID)",
+  "Username": "اسم المستخدم",
+  "SaveChanges": "حفظ التغييرات",
+  "ProfileUpdatedSuccessfully": "تم تحديث الملف الشخصي بنجاح"
 }
