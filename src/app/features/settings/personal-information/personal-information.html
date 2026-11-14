@@ -2,27 +2,14 @@
   <div class="row g-4">
     <div class="col-12">
       <div class="section">
-        <div class="d-flex align-items-center gap-3 mb-4">
-          <app-icon-badge icon="bi-person-circle"></app-icon-badge>
-          <div>
-            <h5 class="text-white mb-0">{{ 'PersonalInformation' | locale }}</h5>
-            <p class="text-muted mb-0">{{ 'PersonalInformationDescription' | locale }}</p>
-          </div>
-        </div>
+        <app-section-header
+          icon="bi-person-circle"
+          title="PersonalInformation"
+          description="PersonalInformationDescription"
+        ></app-section-header>
 
-        @if (serverError()) {
-          <div class="alert alert-danger d-flex align-items-center gap-2 mb-4" role="alert">
-            <i class="bi bi-exclamation-circle-fill"></i>
-            <div>{{ serverError()! | locale }}</div>
-          </div>
-        }
-
-        @if (successMessage()) {
-          <div class="alert alert-success d-flex align-items-center gap-2 mb-4" role="alert">
-            <i class="bi bi-check-circle-fill"></i>
-            <div>{{ successMessage()! | locale }}</div>
-          </div>
-        }
+        <app-alert [message]="serverError()" type="danger"></app-alert>
+        <app-alert [message]="successMessage()" type="success"></app-alert>
 
         <form [formGroup]="infoForm" (ngSubmit)="onSave()" novalidate>
           <div class="row g-3">

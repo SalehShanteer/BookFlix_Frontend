@@ -57,6 +57,16 @@
         {{ 'Login' | locale }}
       </button>
 
+      <div class="auth-divider">
+        <span>{{ 'OrContinueWith' | locale }}</span>
+      </div>
+
+      <app-google-button
+        [isLoading]="isGoogleLoading()"
+        [disabled]="isLoading()"
+        (clicked)="onGoogleLogin()"
+      ></app-google-button>
+
       <footer class="auth-footer">
         <span class="text-muted me-2">{{ 'DontHaveAccount' | locale }}</span>
         <a routerLink="/signup" class="btn-link fw-semibold">{{ 'SignUp' | locale }}</a>

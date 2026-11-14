@@ -1,0 +1,16 @@
+<div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+  <div class="d-flex align-items-center gap-3">
+    @if (icon()) {
+      <app-icon-badge [icon]="icon()"></app-icon-badge>
+    }
+    <div>
+      <h5 class="text-white mb-0">{{ title() | locale }}</h5>
+      @if (description()) {
+        <p class="text-muted mb-0">{{ description() | locale }}</p>
+      }
+    </div>
+  </div>
+  <div class="section-actions">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -24,6 +24,10 @@ export class ApiService {
     return this.http.put<T>(`${this.baseUrl}${endpoint}`, body).pipe(catchError(this.handleError));
   }
 
+  delete<T>(endpoint: string, options?: { headers?: any; params?: any }): Observable<T> {
+    return this.http.delete<T>(`${this.baseUrl}${endpoint}`, options).pipe(catchError(this.handleError));
+  }
+
   private handleError(err: any) {
     console.error('API Error:', err);
     return throwError(() => err);

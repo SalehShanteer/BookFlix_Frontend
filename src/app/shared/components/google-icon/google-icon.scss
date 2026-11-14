@@ -1,0 +1,27 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.google-icon {
+  display: block;
+}
+
+.google-blue {
+  fill: var(--bf-google-blue, #4285f4);
+}
+
+.google-green {
+  fill: var(--bf-google-green, #34a853);
+}
+
+.google-yellow {
+  fill: var(--bf-google-yellow, #fbbc05);
+}
+
+.google-red {
+  fill: var(--bf-google-red, #ea4335);
+}

@@ -1,6 +1,6 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, forwardRef, input, signal } from '@angular/core';
 import { LocalePipe } from '../../pipes/locale-pipe';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-password-field',
@@ -15,19 +15,22 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     },
   ],
 })
-export class PasswordField {
-  @Input() placeholder: string = '';
-  show: boolean = false;
-  value = '';
+export class PasswordField implements ControlValueAccessor {
+  placeholder = input<string>('');
+  icon = input<string>('');
 
-  onToggle() {
-    this.show = !this.show;
+  show = signal<boolean>(false);
+  value = signal<string>('');
+
+  onToggle(): void {
+    this.show.update((current) => !current);
   }
-  onChange = (value: any) => { };
-  onTouched = () => { };
+
+  onChange: (value: string) => void = () => {};
+  onTouched: () => void = () => {};
 
   writeValue(value: any): void {
-    this.value = value || '';
+    this.value.set(value || '');
   }
 
   registerOnChange(fn: any): void {
@@ -38,8 +41,8 @@ export class PasswordField {
     this.onTouched = fn;
   }
 
-  updateValue(value: string) {
-    this.value = value;
-    this.onChange(value);
+  updateValue(val: string): void {
+    this.value.set(val);
+    this.onChange(val);
   }
 }

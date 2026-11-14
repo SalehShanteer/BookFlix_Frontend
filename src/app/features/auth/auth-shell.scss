@@ -202,6 +202,27 @@
   }
 }
 
+.auth-divider {
+  display: flex;
+  align-items: center;
+  margin: 1.25rem 0;
+  text-align: center;
+  color: var(--bf-text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  span {
+    padding: 0 0.85rem;
+  }
+}
+
 .auth-footer {
   margin-top: 1.5rem;
   padding-top: 1rem;

@@ -1,0 +1,15 @@
+<button
+  type="button"
+  class="btn-google"
+  [class.w-100]="fullWidth()"
+  [disabled]="disabled() || isLoading()"
+  (click)="onClick()"
+  [attr.aria-label]="text() | locale"
+>
+  @if (isLoading()) {
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  } @else {
+    <app-google-icon [size]="18"></app-google-icon>
+  }
+  <span>{{ text() | locale }}</span>
+</button>

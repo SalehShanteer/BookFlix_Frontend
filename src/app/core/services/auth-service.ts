@@ -36,6 +36,15 @@ export class AuthService {
     );
   }
 
+  loginWithGoogle(): Observable<{ redirectUrl?: string }> {
+    return this.api.post<{ redirectUrl?: string }>('/auth/google', {}).pipe(
+      tap(() => {
+        this.isAuthChecked = true;
+        this.isAuthenticated = true;
+      }),
+    );
+  }
+
   signup(signupModel: ISignup) {
     return this.api.post('/auth/signup', signupModel).pipe(
       tap(() => {

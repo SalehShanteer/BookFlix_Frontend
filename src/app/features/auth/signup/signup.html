@@ -57,28 +57,7 @@
         />
         <app-form-error [control]="registerForm.get('newPassword')"></app-form-error>
 
-        <div class="password-strength">
-          <div class="password-strength-label">
-            <span>{{ 'PasswordStrength' | locale }}</span>
-            @if (passwordStrength().label) {
-              <span class="password-strength-value" [style.color]="passwordStrength().color">
-                {{ passwordStrength().label | locale }}
-              </span>
-            }
-          </div>
-          <div class="password-strength-bar">
-            @for (segment of strengthSegments; track $index) {
-              <div
-                class="strength-segment"
-                [style.background-color]="
-                  segment <= passwordStrength().score
-                    ? passwordStrength().color
-                    : 'rgba(255, 255, 255, 0.12)'
-                "
-              ></div>
-            }
-          </div>
-        </div>
+        <app-password-strength-meter [password]="registerForm.get('newPassword')?.value"></app-password-strength-meter>
       </div>
 
       <div class="mb-3">

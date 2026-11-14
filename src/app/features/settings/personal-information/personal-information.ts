@@ -3,16 +3,25 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { forkJoin } from 'rxjs';
 import { LocalePipe } from '../../../shared/pipes/locale-pipe';
-import { IconBadge } from '../../../shared/components/icon-badge/icon-badge';
 import { UserService } from '../../../core/services/user-service';
 import { User } from '../../../core/models/User/user.model';
 import { ActionButton } from '../../../shared/components/action-button/action-button';
 import { FormError } from '../../../shared/components/form-error/form-error';
 import { EmailValidator } from '../../../shared/validators/email.validator';
+import { Alert } from '../../../shared/components/alert/alert';
+import { SectionHeader } from '../../../shared/components/section-header/section-header';
 
 @Component({
   selector: 'app-personal-information',
-  imports: [CommonModule, ReactiveFormsModule, LocalePipe, IconBadge, ActionButton, FormError],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    LocalePipe,
+    ActionButton,
+    FormError,
+    Alert,
+    SectionHeader,
+  ],
   templateUrl: './personal-information.html',
   styleUrl: './personal-information.scss',
 })
