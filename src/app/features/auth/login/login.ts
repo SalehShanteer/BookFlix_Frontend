@@ -11,6 +11,7 @@ import { BaseComponent } from '../../../shared/base/base-component';
 import { ActionButton } from '../../../shared/components/action-button/action-button';
 import { BookFlixLogo } from '../../../shared/components/book-flix-logo/book-flix-logo';
 import { GoogleButton } from '../../../shared/components/google-button/google-button';
+import { LanguageSwitcher } from '../../../shared/components/language-switcher/language-switcher';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ import { GoogleButton } from '../../../shared/components/google-button/google-bu
     ActionButton,
     BookFlixLogo,
     GoogleButton,
+    LanguageSwitcher,
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss',

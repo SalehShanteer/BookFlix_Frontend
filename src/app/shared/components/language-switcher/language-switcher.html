@@ -1,0 +1,27 @@
+<div
+  class="lang-switch"
+  [class.lang-switch--full]="variant() === 'full'"
+  role="group"
+  aria-label="Language Switcher"
+>
+  <button
+    type="button"
+    class="lang-option"
+    [class.active]="currentLang() === 'en'"
+    (click)="setLang('en')"
+    aria-label="Switch to English"
+  >
+    <i class="bi {{ variant() === 'full' ? 'bi-globe' : 'bi-translate' }}"></i>
+    <span>{{ variant() === 'full' ? 'English' : 'EN' }}</span>
+  </button>
+  <button
+    type="button"
+    class="lang-option"
+    [class.active]="currentLang() === 'ar'"
+    (click)="setLang('ar')"
+    aria-label="Switch to Arabic"
+  >
+    <i class="bi {{ variant() === 'full' ? 'bi-globe2' : 'bi-translate' }}"></i>
+    <span>{{ variant() === 'full' ? 'العربية' : 'AR' }}</span>
+  </button>
+</div>

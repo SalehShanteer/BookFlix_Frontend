@@ -8,10 +8,11 @@ import { NavbarStateService } from '../../../core/services/navbar-state.service'
 import { ResponsiveService } from '../../../core/services/responsive.service';
 import { NAV_CONFIG } from '../../../core/config/nav.config';
 import { NavItem } from '../../../core/models/Navigation/nav.model';
+import { LanguageSwitcher } from '../language-switcher/language-switcher';
 
 @Component({
   selector: 'app-navbar',
-  imports: [LocalePipe, RouterModule, BookFlixLogo],
+  imports: [LocalePipe, RouterModule, BookFlixLogo, LanguageSwitcher],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
   host: {
@@ -61,13 +62,5 @@ export class Navbar {
         this.authService.forceLogout();
       },
     });
-  }
-
-  toggleLang() {
-    this.localeService.toggleLanguage();
-  }
-
-  setLang(lang: string) {
-    this.localeService.setLanguage(lang);
   }
 }

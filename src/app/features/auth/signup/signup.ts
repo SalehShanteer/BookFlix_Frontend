@@ -13,6 +13,7 @@ import { StrongPasswordValidator } from '../../../shared/validators/strong-passw
 import { EmailValidator } from '../../../shared/validators/email.validator';
 import { BookFlixLogo } from '../../../shared/components/book-flix-logo/book-flix-logo';
 import { PasswordStrengthMeter } from '../../../shared/components/password-strength-meter/password-strength-meter';
+import { LanguageSwitcher } from '../../../shared/components/language-switcher/language-switcher';
 
 @Component({
   selector: 'app-register',
@@ -25,6 +26,7 @@ import { PasswordStrengthMeter } from '../../../shared/components/password-stren
     FormError,
     BookFlixLogo,
     PasswordStrengthMeter,
+    LanguageSwitcher,
   ],
   templateUrl: './signup.html',
   styleUrl: './signup.scss',

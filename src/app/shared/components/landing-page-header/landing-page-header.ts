@@ -7,12 +7,12 @@ import { NAV_CONFIG } from '../../../core/config/nav.config';
 import { AuthService } from '../../../core/services/auth-service';
 import { Router } from '@angular/router';
 import { LocalePipe } from '../../pipes/locale-pipe';
-import { LocaleService } from '../../../core/services/locale-service';
 import { DropdownMenu } from '../dropdown-menu/dropdown-menu';
+import { LanguageSwitcher } from '../language-switcher/language-switcher';
 
 @Component({
   selector: 'app-landing-page-header',
-  imports: [BookFlixLogo, LocalePipe, DropdownMenu],
+  imports: [BookFlixLogo, LocalePipe, DropdownMenu, LanguageSwitcher],
   templateUrl: './landing-page-header.html',
   styleUrl: './landing-page-header.scss',
 })
@@ -21,11 +21,9 @@ export class LandingPageHeader {
   navbarState = inject(NavbarStateService);
   authService = inject(AuthService);
   router = inject(Router);
-  localeService = inject(LocaleService);
 
   navItems = signal<NavItem[]>(NAV_CONFIG);
   activeHoveredId = signal<string | null>(null);
-  readonly currentLang = this.localeService.currentLanguage;
 
   toggleNavbar() {
     this.navbarState.toggle();
@@ -48,13 +46,5 @@ export class LandingPageHeader {
         this.authService.forceLogout();
       },
     });
-  }
-
-  toggleLang() {
-    this.localeService.toggleLanguage();
-  }
-
-  setLang(lang: string) {
-    this.localeService.setLanguage(lang);
   }
 }
